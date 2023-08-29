@@ -1,0 +1,42 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.conteudo-div {
+  color: white;
+  background-color: #007419;
+}
+
+.check-imagem {
+  width: 127px;
+}
+
+.denuncia-enviada {
+  margin-top: 20px;
+  font-size: 50px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.cidade-agradece {
+  margin-top: 20px;
+  font-size: 24px;
+}
+
+.voltar-btn {
+  margin-top: 20px;
+  width: 100px;
+  height: 30px;
+  border: 1px solid white;
+  border-radius: 20px;
+  font-size: 24px;
+  padding: 20px 50px;
+  background-color: #007419;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration:underline #007419;
+}
