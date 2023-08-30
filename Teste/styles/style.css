@@ -33,15 +33,23 @@
 
   text-decoration: none;
   cursor: pointer;
+  transition: box-shadow 0.15s;
+}
+
+.foto-nome-endemia-a:hover {
+  box-shadow: 0 0 20px rgba(0,0,0,0.8);
 }
 
 .foto-endemia-div {
   height: 155px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .foto-endemia {
-  width: 155px;
-  height: 155px;
+  width: 80px;
   object-fit: cover;
   border-radius: 20px 20px 0 0;
 }
