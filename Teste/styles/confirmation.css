@@ -24,8 +24,11 @@ body {
   font-size: 24px;
 }
 
-.voltar-btn {
+.botao-voltar {
   margin-top: 20px;
+}
+
+.voltar-btn {
   width: 100px;
   height: 30px;
   border: 1px solid white;

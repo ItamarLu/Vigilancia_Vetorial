@@ -46,8 +46,11 @@ p {
   padding: 0 20px;
 }
 
-.enviar-denuncia-btn {
+.botao-confirmacao {
   margin-top: 80px;
+}
+
+.enviar-denuncia-btn {
   background-color: #007419;
   width: 330px;
   color: white;
