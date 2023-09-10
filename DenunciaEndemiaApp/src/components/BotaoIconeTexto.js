@@ -3,9 +3,9 @@ import {TouchableOpacity, Text } from "react-native"
 import { Feather } from "@expo/vector-icons"
 
 const BotaoIconeTexto = (props) => {
-  const { wrapperDenunciaStyle, nomeIcone, tamanhoIcone, textoStyle, texto } = props
+  const { wrapperStyle, nomeIcone, tamanhoIcone, textoStyle, texto } = props
   return (
-    <TouchableOpacity style={wrapperDenunciaStyle}>
+    <TouchableOpacity style={wrapperStyle}>
       <Feather name={nomeIcone} size={tamanhoIcone} color={"white"}/>
       <Text style={textoStyle}>{texto}</Text>
     </TouchableOpacity>

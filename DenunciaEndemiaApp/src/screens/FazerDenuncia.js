@@ -1,17 +1,16 @@
 import React from "react"
-import {SafeAreaView, TouchableOpacity, StyleSheet, Text } from "react-native"
-import { Feather } from "@expo/vector-icons"
+import {SafeAreaView, StyleSheet} from "react-native"
 import BotaoIconeTexto from "../components/BotaoIconeTexto"
 
 const FazerDenuncia = () => {
   const { container, wrapperDenuncia, textoDenuncia, wrapperOutraOpcao, TextoOutraOpcao } = styles
   return (
       <SafeAreaView style={container}>
-        <BotaoIconeTexto wrapperDenunciaStyle={wrapperDenuncia} nomeIcone={"alert-triangle"} tamanhoIcone={115} textoStyle={textoDenuncia} texto={'Fazer Denúncia'}/>
+        <BotaoIconeTexto wrapperStyle={wrapperDenuncia} nomeIcone={"alert-triangle"} tamanhoIcone={115} textoStyle={textoDenuncia} texto={'Fazer Denúncia'}/>
 
-        <BotaoIconeTexto wrapperDenunciaStyle={wrapperOutraOpcao} nomeIcone={"list"} tamanhoIcone={30} textoStyle={TextoOutraOpcao} texto={'Histórico'}/>
+        <BotaoIconeTexto wrapperStyle={wrapperOutraOpcao} nomeIcone={"list"} tamanhoIcone={30} textoStyle={TextoOutraOpcao} texto={'Histórico'}/>
 
-        <BotaoIconeTexto wrapperDenunciaStyle={wrapperOutraOpcao} nomeIcone={"phone"} tamanhoIcone={30} textoStyle={TextoOutraOpcao} texto={'Contatos'}/>
+        <BotaoIconeTexto wrapperStyle={wrapperOutraOpcao} nomeIcone={"phone"} tamanhoIcone={30} textoStyle={TextoOutraOpcao} texto={'Contatos'}/>
       </SafeAreaView>
   )
 }

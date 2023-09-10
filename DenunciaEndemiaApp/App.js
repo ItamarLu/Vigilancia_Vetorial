@@ -1,12 +1,14 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import FazerDenuncia from './src/screens/FazerDenuncia'
+// import FazerDenuncia from './src/screens/FazerDenuncia'
+// import MotivoDenuncia from './src/screens/MotivoDenuncia'
+import DadosDenuncia from './src/screens/DadosDenuncia'
 
 const App = () => {
   const { container } = styles
   return (
     <View style={container}>
-      <FazerDenuncia />
+      <DadosDenuncia />
     </View>
   )
 }
