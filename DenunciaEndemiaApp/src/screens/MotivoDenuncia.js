@@ -1,20 +1,28 @@
 import React from "react"
-import {SafeAreaView, Text, StyleSheet } from "react-native"
+import {SafeAreaView, Text, StyleSheet, TouchableOpacity } from "react-native"
 import BotaoImagemTexto from "../components/BotaoImagemTexto"
 
-const MotivoDenuncia = () => {
+const MotivoDenuncia = ({ navigation }) => {
   const { container, textoMotivo, wrapperMotivo, botaoTexto } = styles
   return (
     <SafeAreaView style={container}>
       <Text style={textoMotivo}>Qual o motivo da sua denúncia?</Text>
       
-      <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Barbeiro'} fonteImagem={'../../icons/bug.png'} />
+      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Barbeiro'})}>
+        <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Barbeiro'} fonteImagem={'../../icons/bug.png'} />
+      </TouchableOpacity>
 
-      <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Casa fechada/ Terreno baldio'} fonteImagem={'../../icons/lixo.png'} />
+      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Casa fechada/ Terreno baldio'})}>
+        <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Casa fechada/ Terreno baldio'} fonteImagem={'../../icons/lixo.png'} />
+      </TouchableOpacity>
 
-      <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Escorpião'} fonteImagem={'../../icons/scorpion.png'} />
+      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Escorpião'})}>
+        <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Escorpião'} fonteImagem={'../../icons/scorpion.png'} />
+      </TouchableOpacity>
 
-      <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Foco de Aedes Aegipty'} fonteImagem={'../../icons/mosquito.png'} />
+      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Foco de Aedes Aegipty'})}>
+        <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Foco de Aedes Aegipty'} fonteImagem={'../../icons/mosquito.png'} />
+      </TouchableOpacity>
     </SafeAreaView>
   )
 }

@@ -1,16 +1,22 @@
 import React from "react"
-import {SafeAreaView, StyleSheet} from "react-native"
+import { SafeAreaView, StyleSheet, TouchableOpacity } from "react-native"
 import BotaoIconeTexto from "../components/BotaoIconeTexto"
 
-const FazerDenuncia = () => {
+const FazerDenuncia = ({ navigation }) => {
   const { container, wrapperDenuncia, textoDenuncia, wrapperOutraOpcao, TextoOutraOpcao } = styles
   return (
       <SafeAreaView style={container}>
-        <BotaoIconeTexto wrapperStyle={wrapperDenuncia} nomeIcone={"alert-triangle"} tamanhoIcone={115} textoStyle={textoDenuncia} texto={'Fazer Denúncia'}/>
+        <TouchableOpacity style={wrapperDenuncia} onPress={() => navigation.navigate('MotivoDenuncia')}>
+          <BotaoIconeTexto wrapperStyle={wrapperDenuncia} nomeIcone={"alert-triangle"} tamanhoIcone={115} textoStyle={textoDenuncia} texto={'Fazer Denúncia'} />
+        </TouchableOpacity>
 
-        <BotaoIconeTexto wrapperStyle={wrapperOutraOpcao} nomeIcone={"list"} tamanhoIcone={30} textoStyle={TextoOutraOpcao} texto={'Histórico'}/>
+        <TouchableOpacity style={wrapperOutraOpcao} onPress={() => navigation.navigate('MotivoDenuncia')}>
+          <BotaoIconeTexto wrapperStyle={wrapperOutraOpcao} nomeIcone={"list"} tamanhoIcone={30} textoStyle={TextoOutraOpcao} texto={'Histórico'}/>
+        </TouchableOpacity>
 
-        <BotaoIconeTexto wrapperStyle={wrapperOutraOpcao} nomeIcone={"phone"} tamanhoIcone={30} textoStyle={TextoOutraOpcao} texto={'Contatos'}/>
+        <TouchableOpacity style={wrapperOutraOpcao} onPress={() => navigation.navigate('MotivoDenuncia')}>
+          <BotaoIconeTexto wrapperStyle={wrapperOutraOpcao} nomeIcone={"phone"} tamanhoIcone={30} textoStyle={TextoOutraOpcao} texto={'Contatos'}/>
+        </TouchableOpacity>
       </SafeAreaView>
   )
 }

@@ -1,21 +1,24 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
-// import FazerDenuncia from './src/screens/FazerDenuncia'
-// import MotivoDenuncia from './src/screens/MotivoDenuncia'
+import FazerDenuncia from './src/screens/FazerDenuncia'
+import MotivoDenuncia from './src/screens/MotivoDenuncia'
 import DadosDenuncia from './src/screens/DadosDenuncia'
+import DenunciaFeita from './src/screens/DenunciaFeita'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
+const Stack = createNativeStackNavigator()
 
 const App = () => {
-  const { container } = styles
   return (
-    <View style={container}>
-      <DadosDenuncia />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="FazerDenuncia" component={FazerDenuncia} options={{headerShown: false}}/>
+        <Stack.Screen name="MotivoDenuncia" component={MotivoDenuncia} options={{headerShown: false}}/>
+        <Stack.Screen name="DadosDenuncia" component={DadosDenuncia} options={{headerShown: false}}/>
+        <Stack.Screen name="DenunciaFeita" component={DenunciaFeita} options={{headerShown: false}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
 export default App
