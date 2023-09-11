@@ -1,24 +1,38 @@
 import React from 'react'
-import FazerDenuncia from './src/screens/FazerDenuncia'
-import MotivoDenuncia from './src/screens/MotivoDenuncia'
-import DadosDenuncia from './src/screens/DadosDenuncia'
-import DenunciaFeita from './src/screens/DenunciaFeita'
+import { View, StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-
-const Stack = createNativeStackNavigator()
+import ScreensTabs from './src/components/ScreensTabs'
+import { GetLocation } from './src/hooks/GetLocation'
+import ErrorItem from './src/components/ErrorItem'
+import LoadingItem from './src/components/LoadingItem'
 
 const App = () => {
+  const [loading, error] = GetLocation()
+
+  if (!loading && !error) {
+    return (
+      <NavigationContainer>
+        <ScreensTabs />
+      </NavigationContainer>
+    )
+  }
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="FazerDenuncia" component={FazerDenuncia} options={{headerShown: false}}/>
-        <Stack.Screen name="MotivoDenuncia" component={MotivoDenuncia} options={{headerShown: false}}/>
-        <Stack.Screen name="DadosDenuncia" component={DadosDenuncia} options={{headerShown: false}}/>
-        <Stack.Screen name="DenunciaFeita" component={DenunciaFeita} options={{headerShown: false}}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+    <View style={styles.container}>
+      {error ? (
+        <ErrorItem />
+      ) : (
+        <LoadingItem />
+      )}
+    </View>
   )
 }
 
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    gap: 30
+  }
+})
 export default App
