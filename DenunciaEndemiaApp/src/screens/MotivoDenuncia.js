@@ -6,14 +6,14 @@ const MotivoDenuncia = ({ navigation }) => {
   const { container, textoMotivo, wrapperMotivo, botaoTexto } = styles
   return (
     <SafeAreaView style={container}>
-      <Text style={textoMotivo}>Qual o motivo da sua denúncia?</Text>
+      <Text style={textoMotivo}>Qual o motivo do seu contato?</Text>
       
       <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Barbeiro'})}>
         <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Barbeiro'} fonteImagem={'../../icons/bug.png'} />
       </TouchableOpacity>
 
-      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Casa fechada/ Terreno baldio'})}>
-        <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Casa fechada/ Terreno baldio'} fonteImagem={'../../icons/lixo.png'} />
+      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Casa fechada, Terreno baldio'})}>
+        <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Casa fechada, Terreno baldio'} fonteImagem={'../../icons/lixo.png'} />
       </TouchableOpacity>
 
       <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Escorpião'})}>
@@ -21,7 +21,7 @@ const MotivoDenuncia = ({ navigation }) => {
       </TouchableOpacity>
 
       <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Foco de Aedes Aegipty'})}>
-        <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Foco de Aedes Aegipty'} fonteImagem={'../../icons/mosquito.png'} />
+        <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Foco de \nAedes Aegipty'} fonteImagem={'../../icons/mosquito.png'} />
       </TouchableOpacity>
     </SafeAreaView>
   )
@@ -35,8 +35,7 @@ const styles = StyleSheet.create({
     gap: 20
   },
   textoMotivo: {
-    fontSize: 28,
-    fontWeight: '700',
+    fontSize: 35,
     textAlign: 'center',
     width: 280
   },
@@ -44,15 +43,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'start',
     alignItems: 'center',
-    backgroundColor: '#3F45B6',
+    backgroundColor: 'white',
     borderRadius: 15,
     width: 280,
     height: 90,
-    padding: 10
+    padding: 10,
+    elevation: 7
   },
   botaoTexto: {
-    color: 'white',
-    fontSize: 28,
+    color: '#3F45B6',
+    fontSize: 27,
     lineHeight: 34,
     marginLeft: 15
   }

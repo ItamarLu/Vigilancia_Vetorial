@@ -43,7 +43,8 @@ const BotaoImagemTexto = (props) => {
 const styles = StyleSheet.create({
   imagemStyle: {
     width: 60, 
-    height: 60
+    height: 60,
+    tintColor: '#3F45B6'
   }
 })
 export default BotaoImagemTexto

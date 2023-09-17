@@ -3,19 +3,19 @@ import { SafeAreaView, StyleSheet, TouchableOpacity } from "react-native"
 import BotaoIconeTexto from "../components/BotaoIconeTexto"
 
 const FazerDenuncia = ({ navigation }) => {
-  const { container, wrapperDenuncia, textoDenuncia, wrapperOutraOpcao, TextoOutraOpcao } = styles
+  const { container, wrapperDenuncia, textoDenuncia, wrapperOutraOpcao, TextoOutraOpcao, sombra } = styles
   return (
       <SafeAreaView style={container}>
-        <TouchableOpacity style={wrapperDenuncia} onPress={() => navigation.navigate('MotivoDenuncia')}>
-          <BotaoIconeTexto wrapperStyle={wrapperDenuncia} nomeIcone={"alert-triangle"} tamanhoIcone={115} textoStyle={textoDenuncia} texto={'Fazer Denúncia'} />
+        <TouchableOpacity style={[wrapperDenuncia, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
+          <BotaoIconeTexto nomeIcone={"alert-triangle"} tamanhoIcone={115} corItem={'#BD373B'} textoStyle={textoDenuncia} texto={'Reportar Problema'} />
         </TouchableOpacity>
 
-        <TouchableOpacity style={wrapperOutraOpcao} onPress={() => navigation.navigate('MotivoDenuncia')}>
-          <BotaoIconeTexto wrapperStyle={wrapperOutraOpcao} nomeIcone={"list"} tamanhoIcone={30} textoStyle={TextoOutraOpcao} texto={'Histórico'}/>
+        <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
+          <BotaoIconeTexto nomeIcone={"clock"} tamanhoIcone={36} corItem={'#3B4C9D'} textoStyle={TextoOutraOpcao} texto={'Histórico'}/>
         </TouchableOpacity>
 
-        <TouchableOpacity style={wrapperOutraOpcao} onPress={() => navigation.navigate('MotivoDenuncia')}>
-          <BotaoIconeTexto wrapperStyle={wrapperOutraOpcao} nomeIcone={"phone"} tamanhoIcone={30} textoStyle={TextoOutraOpcao} texto={'Contatos'}/>
+        <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
+          <BotaoIconeTexto nomeIcone={"users"} tamanhoIcone={36} corItem={'#3B4C9D'} textoStyle={TextoOutraOpcao} texto={'Contatos'}/>
         </TouchableOpacity>
       </SafeAreaView>
   )
@@ -26,36 +26,42 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 10
+    gap: 20
   },
   wrapperDenuncia: {
-    backgroundColor: '#B63F54',
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
     width: 280, 
     height: 371,
-    borderRadius: 15
+    borderRadius: 15,
+    gap: 10
+  },
+  sombra: {
+    elevation: 7
   },
   textoDenuncia: {
     fontSize: 28,
-    color: 'white',
+    color: '#BD373B',
     width: 137,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontWeight: '500',
+    lineHeight: 36
   },
   wrapperOutraOpcao: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#3F45B6',
+    backgroundColor: 'white',
     borderRadius: 15,
     width: 280,
-    height: 59
+    height: 59,
+    gap: 10
   },
   TextoOutraOpcao: {
-    color: 'white',
+    color: '#3B4C9D',
     fontSize: 28,
-    lineHeight: 34,
-    marginLeft: 5
+    lineHeight: 34
   }
 })
 export default FazerDenuncia

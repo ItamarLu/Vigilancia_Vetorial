@@ -6,7 +6,7 @@ import { GetImageLibrary } from "../hooks/GetImageLibrary"
 import { GetImageCamera } from "../hooks/GetImageCamera"
 
 const DadosDenuncia = ({ route, navigation }) => {
-  const { container, wrapperTitle, textoDenuncia, nomeDenuncia, wrapperLista, botaoEnviar, textoEnv, textoVer, sectionHeader, inputTexto, botaoImagemWrap, botaoImagem, imagePreview } = styles
+  const { container, wrapperTitle, textoDenuncia, nomeDenuncia, wrapperLista, botaoEnviar, textoEnv, sectionHeader, inputTexto, botaoImagemWrap, botaoImagem, imagePreview } = styles
   const { motivo } = route.params
   const [image, setImage] = useState()
   return (
@@ -20,34 +20,32 @@ const DadosDenuncia = ({ route, navigation }) => {
         <ScrollView>
           <View>
             <Text style={sectionHeader}>{'Imagem'}</Text>
+            
             <View style={botaoImagemWrap}>
               <TouchableOpacity style={botaoImagem} onPress={async () => {
                 const uriValue = await GetImageCamera()
                 setImage(uriValue)
               }}>
-                <Feather name="camera" size={40} color="#3F45B6" />
+                <Feather name="camera" size={40} color="white" />
               </TouchableOpacity>
               <TouchableOpacity style={botaoImagem} onPress={async () => {
                 const uriValue = await GetImageLibrary()
                 setImage(uriValue)
               }}>
-                <Feather name="folder" size={40} color="#3F45B6" />
+                <Feather name="folder" size={40} color="white" />
               </TouchableOpacity>
               <Image source={{ uri: image }} style={imagePreview}/>
             </View>
           </View>
 
-          <TextInputText headerStyle={sectionHeader} text={'Nome'} textInputStyle={inputTexto} />
-
           <TextInputText headerStyle={sectionHeader} text={'Telefone'} textInputStyle={inputTexto} />
 
-          <TextInputText headerStyle={sectionHeader} text={'E-mail'} textInputStyle={inputTexto} />
+          <TextInputText headerStyle={sectionHeader} text={'Localização'} textInputStyle={inputTexto} />
         </ScrollView>
       </View>
 
       <TouchableOpacity style={botaoEnviar} onPress={() => navigation.navigate('DenunciaFeita')}>
         <Text style={textoEnv}>Enviar</Text>
-        <Text style={textoVer}>Verifique os dados</Text>
       </TouchableOpacity>
     </SafeAreaView>
   )
@@ -61,11 +59,10 @@ const styles = StyleSheet.create({
     gap: 20
   },
   wrapperTitle: {
-    width: 280,
-    height: 90
+    width: 280
   },
   textoDenuncia: {
-    fontSize: 28,
+    fontSize: 35,
     textAlign: 'center'
   }, 
   nomeDenuncia: {
@@ -73,7 +70,7 @@ const styles = StyleSheet.create({
   },
   wrapperLista: {
     width: 280,
-    height: 308
+    height: 310
   },
   botaoEnviar: {
     backgroundColor: '#007419',
@@ -81,42 +78,40 @@ const styles = StyleSheet.create({
     height: 90,
     borderRadius: 15,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    elevation: 7
   },
   textoEnv: {
     color: 'white',
     fontSize: 36,
-    fontWeight: '600'
-
-  },
-  textoVer: {
-    color: 'white'
+    fontWeight: '500'
   },
   sectionHeader: {
-    fontSize: 24
+    fontSize: 24,
+    marginTop: 20
   },
   inputTexto: {
-    borderStyle:'solid',
-    borderWidth: 3,
-    borderColor: '#3F45B6',
+    borderColor: '#e6e6e6',
+    borderWidth: 2,
     borderRadius: 15,
-    backgroundColor: '#D9D9D9',
+    backgroundColor: 'white',
     height: 62,
-    padding: 10
+    padding: 10,
+    marginTop: 5
   },
   botaoImagemWrap: {
     flexDirection: 'row',
-    gap: 10
+    gap: 10,
+    marginTop: 5
   },
   botaoImagem: {
-    borderWidth: 3,
     borderRadius: 15,
-    borderColor: '#3F45B6',
     height: 62,
     width: 62,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#D9D9D9'
+    backgroundColor: '#3F45B6',
+    elevation: 7
   },
   imagePreview: {
     borderWidth: 3,

@@ -11,7 +11,7 @@ const DenunciaFeita = ({ navigation }) => {
           <AntDesign name="checkcircle" size={137} color="white" />
         </View>
         <View style={textWrap}>
-          <Text style={textoEnvi}>Denúncia Enviada!</Text>
+          <Text style={textoEnvi}>Problema reportado!</Text>
           <Text style={textoAgra}>A cidade agradece.</Text>
         </View> 
       </View>
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#007419'
+    backgroundColor: 'rgba(0,116,25,0.7)'
   },
   checkTextContainer: { 
     flex: 1, 
@@ -55,16 +55,15 @@ const styles = StyleSheet.create({
   botaoVoltar: {
     width: 280,
     height: 55,
-    borderWidth: 3,
-    borderStyle: 'solid',
+    elevation: 5,
+    backgroundColor: 'white',
     borderRadius: 15,
-    borderColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 30
   },
   textoBotao: {
-    color: 'white',
+    color: 'black',
     fontSize: 24
   }
 })
