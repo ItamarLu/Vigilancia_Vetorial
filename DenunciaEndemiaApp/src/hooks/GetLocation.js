@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"
 import * as Location from 'expo-location'
 
 export const GetLocation = () => {
@@ -10,14 +10,14 @@ export const GetLocation = () => {
         return
       }
       let location = await Location.getCurrentPositionAsync({})
-      setLocation(Location)
+      setLocation(location)
       setLoading(false)
     })()
   }, [])
-
+  
   const [loading, setLoading] = useState(true)
   const [location, setLocation] = useState(null)
   const [error, setError] = useState()
-
-  return [loading, error]
+  
+  return [loading, error, location]
 }

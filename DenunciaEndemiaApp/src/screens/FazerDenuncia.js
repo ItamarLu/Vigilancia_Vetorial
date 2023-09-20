@@ -10,7 +10,7 @@ const FazerDenuncia = ({ navigation }) => {
           <BotaoIconeTexto nomeIcone={"alert-triangle"} tamanhoIcone={115} corItem={'#BD373B'} textoStyle={textoDenuncia} texto={'Reportar Problema'} />
         </TouchableOpacity>
 
-        <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
+        <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => navigation.navigate('VerMapa')}>
           <BotaoIconeTexto nomeIcone={"clock"} tamanhoIcone={36} corItem={'#3B4C9D'} textoStyle={TextoOutraOpcao} texto={'Histórico'}/>
         </TouchableOpacity>
 

@@ -4,9 +4,10 @@ import TextInputText from "../components/TextInputText"
 import { Feather } from '@expo/vector-icons'
 import { GetImageLibrary } from "../hooks/GetImageLibrary"
 import { GetImageCamera } from "../hooks/GetImageCamera"
+import VerMapa from "../components/VerMapa"
 
 const DadosDenuncia = ({ route, navigation }) => {
-  const { container, wrapperTitle, textoDenuncia, nomeDenuncia, wrapperLista, botaoEnviar, textoEnv, sectionHeader, inputTexto, botaoImagemWrap, botaoImagem, imagePreview } = styles
+  const { container, wrapperTitle, textoDenuncia, nomeDenuncia, wrapperLista, botaoEnviar, textoEnv, sectionHeader, inputTexto, botaoImagemWrap, botaoImagem, imagePreview, containerMapa } = styles
   const { motivo } = route.params
   const [image, setImage] = useState()
   return (
@@ -40,7 +41,12 @@ const DadosDenuncia = ({ route, navigation }) => {
 
           <TextInputText headerStyle={sectionHeader} text={'Telefone'} textInputStyle={inputTexto} />
 
-          <TextInputText headerStyle={sectionHeader} text={'Localização'} textInputStyle={inputTexto} />
+          <View>
+            <Text style={sectionHeader}>Localização</Text>
+            <View style={containerMapa}>
+              <VerMapa />
+            </View>
+          </View>
         </ScrollView>
       </View>
 
@@ -97,7 +103,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     height: 62,
     padding: 10,
-    marginTop: 5
+    marginTop: 5,
+    fontSize: 20
   },
   botaoImagemWrap: {
     flexDirection: 'row',
@@ -118,6 +125,13 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     height: 62,
     width: 62
+  },
+  containerMapa: {
+    borderColor: '#e6e6e6',
+    borderWidth: 2,
+    backgroundColor: 'white',
+    width: 280,
+    height: 150
   }
 })
 export default DadosDenuncia
