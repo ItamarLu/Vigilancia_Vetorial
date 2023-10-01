@@ -1,21 +1,30 @@
 import React from "react"
-import { SafeAreaView, StyleSheet, TouchableOpacity } from "react-native"
+import { SafeAreaView, StyleSheet, TouchableOpacity, View, Image, Text } from "react-native"
 import BotaoIconeTexto from "../components/BotaoIconeTexto"
 
 const FazerDenuncia = ({ navigation }) => {
-  const { container, wrapperDenuncia, textoDenuncia, wrapperOutraOpcao, TextoOutraOpcao, sombra } = styles
+  const { container, wrapperDenuncia, textoDenuncia, wrapperOutraOpcao, TextoOutraOpcao, sombra, logo, header,logoPrefeitura, textoVig, traco } = styles
   return (
       <SafeAreaView style={container}>
+        <View style={header}>
+          <Image source={require('../../assets/logoJuazeiro2.png')} style={logo}/>
+          <Image />
+          <Image source={require('../../assets/logoPrefeitura.png')} style={logoPrefeitura}/>
+          <Image />
+          <View style={traco}></View>
+          <Text style={textoVig}>Vigilância em Saúde</Text>
+        </View>
+
         <TouchableOpacity style={[wrapperDenuncia, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
-          <BotaoIconeTexto nomeIcone={"alert-triangle"} tamanhoIcone={115} corItem={'#BD373B'} textoStyle={textoDenuncia} texto={'Reportar Problema'} />
+          <BotaoIconeTexto nomeIcone={"alert-triangle"} tamanhoIcone={95} corItem={'white'} textoStyle={textoDenuncia} texto={'Reportar Problema'} />
         </TouchableOpacity>
 
         <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => navigation.navigate('VerMapa')}>
-          <BotaoIconeTexto nomeIcone={"clock"} tamanhoIcone={36} corItem={'#3B4C9D'} textoStyle={TextoOutraOpcao} texto={'Histórico'}/>
+          <BotaoIconeTexto nomeIcone={"globe"} tamanhoIcone={36} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Nosso site'}/>
         </TouchableOpacity>
 
         <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
-          <BotaoIconeTexto nomeIcone={"users"} tamanhoIcone={36} corItem={'#3B4C9D'} textoStyle={TextoOutraOpcao} texto={'Contatos'}/>
+          <BotaoIconeTexto nomeIcone={"instagram"} tamanhoIcone={36} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Instagram'}/>
         </TouchableOpacity>
       </SafeAreaView>
   )
@@ -26,23 +35,24 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 20
+    gap: 20,
+    backgroundColor: '#637EFF'
   },
   wrapperDenuncia: {
-    backgroundColor: 'white',
+    backgroundColor: '#3F45B6',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 280, 
-    height: 371,
-    borderRadius: 15,
+    width: 286, 
+    height: 295,
+    borderRadius: 5,
     gap: 10
   },
   sombra: {
     elevation: 7
   },
   textoDenuncia: {
-    fontSize: 28,
-    color: '#BD373B',
+    fontSize: 27,
+    color: 'white',
     width: 137,
     textAlign: 'center',
     fontWeight: '500',
@@ -53,15 +63,45 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
-    borderRadius: 15,
-    width: 280,
-    height: 59,
+    borderRadius: 5,
+    width: 285,
+    height: 60,
     gap: 10
   },
   TextoOutraOpcao: {
-    color: '#3B4C9D',
-    fontSize: 28,
+    color: '#3F45B6',
+    fontSize: 24,
     lineHeight: 34
+  },
+  header: {
+    flexDirection: 'row',
+    width: 272,
+    height: 51, 
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  logo: {
+    width: 51,
+    height: 51,
+    alignSelf: 'center',
+    objectFit: 'contain'
+  },
+  logoPrefeitura: {
+    width: 100,
+    height: 43,
+    alignSelf: 'center',
+    objectFit: 'contain'
+  },
+  textoVig: {
+    color: 'white',
+    fontSize: 18,
+    width: 94,
+    textAlign: 'center'
+  },
+  traco: {
+    width: 1,
+    height: 51,
+    backgroundColor: 'white'
   }
 })
 export default FazerDenuncia

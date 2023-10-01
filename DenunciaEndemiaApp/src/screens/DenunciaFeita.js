@@ -1,6 +1,6 @@
 import React from "react"
 import { SafeAreaView, Text, TouchableOpacity, StyleSheet, View } from "react-native"
-import { AntDesign } from '@expo/vector-icons'
+import { FontAwesome5 } from '@expo/vector-icons'
 
 const DenunciaFeita = ({ navigation }) => {
   const { container, textoEnvi, textoAgra, textWrap, botaoVoltar, textoBotao, checkTextContainer, iconWrap } = styles
@@ -8,7 +8,7 @@ const DenunciaFeita = ({ navigation }) => {
     <SafeAreaView style={container}>
       <View style={checkTextContainer}>
         <View style={iconWrap}>
-          <AntDesign name="checkcircle" size={137} color="white" />
+          <FontAwesome5 name="check" size={100} color="white" />
         </View>
         <View style={textWrap}>
           <Text style={textoEnvi}>Problema reportado!</Text>
@@ -16,7 +16,7 @@ const DenunciaFeita = ({ navigation }) => {
         </View> 
       </View>
       <TouchableOpacity style={botaoVoltar} onPress={() => navigation.navigate('FazerDenuncia')}>
-        <Text style={textoBotao}>Voltar</Text>
+        <Text style={textoBotao}>Retornar</Text>
       </TouchableOpacity>
     </SafeAreaView>
   )
@@ -27,44 +27,52 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,116,25,0.7)'
+    backgroundColor: '#3F45B6'
   },
   checkTextContainer: { 
     flex: 1, 
-    justifyContent: "center" 
+    justifyContent: "center"
   },
   iconWrap: {
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: "center",
+    backgroundColor: '#637EFF',
+    width: 137,
+    height: 137,
+    borderRadius: 100,
+    alignSelf: 'center' 
   },
   textWrap: {
-    width: 200,
+    width: 250,
     alignItems: 'center',
-    marginTop: 30
+    marginTop: 30,
+    gap: 20
   },
   textoEnvi: {
     color: 'white',
     fontSize: 40,
     textAlign: 'center',
-    lineHeight: 41
+    lineHeight: 41,
+    fontWeight: '600'
   },
   textoAgra: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 25,
     lineHeight: 24
   },
   botaoVoltar: {
     width: 280,
-    height: 55,
+    height: 65,
     elevation: 5,
-    backgroundColor: 'white',
-    borderRadius: 15,
+    backgroundColor: '#637EFF',
+    borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 30
   },
   textoBotao: {
-    color: 'black',
-    fontSize: 24
+    color: 'white',
+    fontSize: 28
   }
 })
 

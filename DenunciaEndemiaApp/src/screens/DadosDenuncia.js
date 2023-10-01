@@ -39,7 +39,7 @@ const DadosDenuncia = ({ route, navigation }) => {
             </View>
           </View>
 
-          <TextInputText headerStyle={sectionHeader} text={'Telefone'} textInputStyle={inputTexto} />
+          <TextInputText headerStyle={sectionHeader} text={'Nome'} textInputStyle={inputTexto} />
 
           <View>
             <Text style={sectionHeader}>Localização</Text>
@@ -62,14 +62,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 20
+    gap: 20,
+    backgroundColor: '#637EFF'
   },
   wrapperTitle: {
     width: 280
   },
   textoDenuncia: {
     fontSize: 35,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white'
   }, 
   nomeDenuncia: {
     fontWeight: '700'
@@ -79,10 +81,10 @@ const styles = StyleSheet.create({
     height: 310
   },
   botaoEnviar: {
-    backgroundColor: '#007419',
+    backgroundColor: '#3F45B6',
     width: 280,
     height: 90,
-    borderRadius: 15,
+    borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 7
@@ -94,12 +96,13 @@ const styles = StyleSheet.create({
   },
   sectionHeader: {
     fontSize: 24,
-    marginTop: 20
+    marginTop: 20,
+    color: 'white'
   },
   inputTexto: {
     borderColor: '#e6e6e6',
     borderWidth: 2,
-    borderRadius: 15,
+    borderRadius: 5,
     backgroundColor: 'white',
     height: 62,
     padding: 10,
@@ -112,7 +115,7 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   botaoImagem: {
-    borderRadius: 15,
+    borderRadius: 5,
     height: 62,
     width: 62,
     justifyContent: 'center',
@@ -122,7 +125,7 @@ const styles = StyleSheet.create({
   },
   imagePreview: {
     borderWidth: 3,
-    borderRadius: 15,
+    borderRadius: 5,
     height: 62,
     width: 62
   },
