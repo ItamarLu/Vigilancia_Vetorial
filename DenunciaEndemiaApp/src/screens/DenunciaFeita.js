@@ -37,32 +37,32 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: "center",
     backgroundColor: '#637EFF',
-    width: 137,
-    height: 137,
+    width: 157,
+    height: 157,
     borderRadius: 100,
     alignSelf: 'center' 
   },
   textWrap: {
-    width: 250,
+    width: 280,
     alignItems: 'center',
     marginTop: 30,
     gap: 20
   },
   textoEnvi: {
     color: 'white',
-    fontSize: 40,
+    fontSize: 45,
     textAlign: 'center',
-    lineHeight: 41,
+    lineHeight: 45,
     fontWeight: '600'
   },
   textoAgra: {
     color: 'white',
-    fontSize: 25,
-    lineHeight: 24
+    fontSize: 30,
+    lineHeight: 30
   },
   botaoVoltar: {
-    width: 280,
-    height: 65,
+    width: 300,
+    height: 80,
     elevation: 5,
     backgroundColor: '#637EFF',
     borderRadius: 5,
@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
   },
   textoBotao: {
     color: 'white',
-    fontSize: 28
+    fontSize: 30,
+    fontWeight: '500'
   }
 })
 

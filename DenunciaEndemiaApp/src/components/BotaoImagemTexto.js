@@ -50,13 +50,13 @@ const BotaoImagemTexto = (props) => {
 
 const styles = StyleSheet.create({
   imagemStyle: {
-    width: 45, 
-    height: 45,
+    width: 55, 
+    height: 55,
     tintColor: 'white'
   },
   imagemPadd: {
-    width: 65,
-    height: 65,
+    width: 80,
+    height: 80,
     backgroundColor: '#3F45B6',
     borderRadius: 5,
     display: 'flex',

@@ -8,7 +8,7 @@ const MotivoDenuncia = ({ navigation }) => {
     <SafeAreaView style={container}>
       <Text style={textoMotivo}>Qual o motivo do seu contato?</Text>
       
-      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Foco de Aedes Aegipty'})}>
+      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Aedes A.'})}>
         <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Aedes \nAegipty'} fonteImagem={'../../icons/mosquito.png'} />
       </TouchableOpacity>
       
@@ -16,7 +16,7 @@ const MotivoDenuncia = ({ navigation }) => {
         <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Barbeiro'} fonteImagem={'../../icons/bug.png'} />
       </TouchableOpacity>
 
-      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Casa fechada, Terreno baldio'})}>
+      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Casa/Terreno'})}>
         <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Casa fechada, \nTerreno baldio'} fonteImagem={'../../icons/lixo.png'} />
       </TouchableOpacity>
 
@@ -37,11 +37,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#637EFF'
   },
   textoMotivo: {
-    fontSize: 35,
+    fontSize: 40,
     textAlign: 'center',
-    width: 280,
+    width: 350,
     color: 'white',
-    marginBottom: 10
+    marginBottom: 20
   },
   wrapperMotivo: {
     flexDirection: 'row',
@@ -49,16 +49,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
     borderRadius: 5,
-    width: 287,
-    height: 95,
-    padding: 10,
+    width: 350,
+    height: 115,
+    padding: 20,
     elevation: 7
   },
   botaoTexto: {
     color: '#3F45B6',
-    fontSize: 25,
-    lineHeight: 34,
-    marginLeft: 15
+    fontSize: 30
   }
 })
 export default MotivoDenuncia

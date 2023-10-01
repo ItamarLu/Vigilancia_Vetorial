@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    gap: 30
+    gap: 30,
+    backgroundColor: '#637EFF'
   }
 })
 export default App

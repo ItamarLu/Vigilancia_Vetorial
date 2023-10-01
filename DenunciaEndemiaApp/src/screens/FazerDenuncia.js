@@ -16,15 +16,15 @@ const FazerDenuncia = ({ navigation }) => {
         </View>
 
         <TouchableOpacity style={[wrapperDenuncia, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
-          <BotaoIconeTexto nomeIcone={"alert-triangle"} tamanhoIcone={95} corItem={'white'} textoStyle={textoDenuncia} texto={'Reportar Problema'} />
+          <BotaoIconeTexto nomeIcone={"alert-triangle"} tamanhoIcone={110} corItem={'white'} textoStyle={textoDenuncia} texto={'Reportar Problema'} />
         </TouchableOpacity>
 
         <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => navigation.navigate('VerMapa')}>
-          <BotaoIconeTexto nomeIcone={"globe"} tamanhoIcone={36} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Nosso site'}/>
+          <BotaoIconeTexto nomeIcone={"globe"} tamanhoIcone={47} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Nosso site'}/>
         </TouchableOpacity>
 
         <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
-          <BotaoIconeTexto nomeIcone={"instagram"} tamanhoIcone={36} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Instagram'}/>
+          <BotaoIconeTexto nomeIcone={"instagram"} tamanhoIcone={47} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Instagram'}/>
         </TouchableOpacity>
       </SafeAreaView>
   )
@@ -35,15 +35,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 20,
+    gap: 30,
     backgroundColor: '#637EFF'
   },
   wrapperDenuncia: {
     backgroundColor: '#3F45B6',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 286, 
-    height: 295,
+    width: 350, 
+    height: 360,
     borderRadius: 5,
     gap: 10
   },
@@ -51,12 +51,10 @@ const styles = StyleSheet.create({
     elevation: 7
   },
   textoDenuncia: {
-    fontSize: 27,
+    fontSize: 35,
     color: 'white',
-    width: 137,
+    width: 175,
     textAlign: 'center',
-    fontWeight: '500',
-    lineHeight: 36
   },
   wrapperOutraOpcao: {
     flexDirection: 'row',
@@ -64,43 +62,42 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
     borderRadius: 5,
-    width: 285,
-    height: 60,
-    gap: 10
+    width: 350,
+    height: 75,
+    gap: 15
   },
   TextoOutraOpcao: {
     color: '#3F45B6',
-    fontSize: 24,
-    lineHeight: 34
+    fontSize: 32
   },
   header: {
     flexDirection: 'row',
-    width: 272,
-    height: 51, 
+    width: 350,
+    height: 65, 
     justifyContent: 'space-between',
     alignItems: 'center'
   },
   logo: {
-    width: 51,
-    height: 51,
+    width: 65,
+    height: 65,
     alignSelf: 'center',
     objectFit: 'contain'
   },
   logoPrefeitura: {
-    width: 100,
-    height: 43,
+    width: 120,
+    height: 65,
     alignSelf: 'center',
     objectFit: 'contain'
   },
   textoVig: {
     color: 'white',
-    fontSize: 18,
-    width: 94,
+    fontSize: 25,
+    width: 120,
     textAlign: 'center'
   },
   traco: {
     width: 1,
-    height: 51,
+    height: 65,
     backgroundColor: 'white'
   }
 })
