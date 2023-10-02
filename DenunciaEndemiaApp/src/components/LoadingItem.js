@@ -6,15 +6,15 @@ const LoadingItem = () => {
   return (
     <> 
       <Image source={require('../../assets/logoJuazeiro.png')} style={logo}/>
-      <ActivityIndicator size={'large'} color={'blue'}/> 
+      <ActivityIndicator size={'large'} color={'white'}/> 
     </>
   )
 }
 
 const styles = StyleSheet.create({
   logo: {
-    width: 165,
-    height: 200,
+    width: 200,
+    height: 240,
     alignSelf: 'center'
   }
 })
