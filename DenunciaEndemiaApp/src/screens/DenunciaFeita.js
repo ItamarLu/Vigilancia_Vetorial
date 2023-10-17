@@ -1,14 +1,15 @@
 import React from "react"
-import { SafeAreaView, Text, TouchableOpacity, StyleSheet, View } from "react-native"
+import { Text, TouchableOpacity, StyleSheet, View } from "react-native"
 import { FontAwesome5 } from '@expo/vector-icons'
+import { LinearGradient } from 'expo-linear-gradient'
 
 const DenunciaFeita = ({ navigation }) => {
   const { container, textoEnvi, textoAgra, textWrap, botaoVoltar, textoBotao, checkTextContainer, iconWrap } = styles
   return (
-    <SafeAreaView style={container}>
+    <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
       <View style={checkTextContainer}>
         <View style={iconWrap}>
-          <FontAwesome5 name="check" size={100} color="white" />
+          <FontAwesome5 name="check" size={100} color="#06417B" />
         </View>
         <View style={textWrap}>
           <Text style={textoEnvi}>Problema reportado!</Text>
@@ -18,7 +19,7 @@ const DenunciaFeita = ({ navigation }) => {
       <TouchableOpacity style={botaoVoltar} onPress={() => navigation.navigate('FazerDenuncia')}>
         <Text style={textoBotao}>Retornar</Text>
       </TouchableOpacity>
-    </SafeAreaView>
+    </LinearGradient>
   )
 }
 
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   iconWrap: {
     justifyContent: 'center',
     alignItems: "center",
-    backgroundColor: '#637EFF',
+    backgroundColor: 'white',
     width: 157,
     height: 157,
     borderRadius: 100,
@@ -61,10 +62,10 @@ const styles = StyleSheet.create({
     lineHeight: 30
   },
   botaoVoltar: {
-    width: 300,
-    height: 80,
+    width: 310,
+    height: 85,
     elevation: 5,
-    backgroundColor: '#637EFF',
+    backgroundColor: '#06417B',
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',

@@ -39,12 +39,12 @@ const styles = StyleSheet.create({
   iconeStyle: {
     width: 65, 
     height: 65,
-    tintColor: 'white'
+    tintColor: '#06417B'
   },
   iconePadd: {
     width: 85,
     height: 85,
-    backgroundColor: '#3F45B6',
+    backgroundColor: 'white',
     borderRadius: 5,
     display: 'flex',
     justifyContent: 'center',

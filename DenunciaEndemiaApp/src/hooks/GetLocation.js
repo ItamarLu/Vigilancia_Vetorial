@@ -9,9 +9,14 @@ export const GetLocation = () => {
         setError('Permissão para acessar localização foi negada')
         return
       }
-      let location = await Location.getCurrentPositionAsync({})
-      setLocation(location)
-      setLoading(false)
+      try {
+        let location = await Location.getCurrentPositionAsync({})
+        setLocation(location)
+      } catch(e) {
+        setError('Não foi possivel obter sua Localização')
+      } finally {
+        setLoading(false)
+      }
     })()
   }, [])
   

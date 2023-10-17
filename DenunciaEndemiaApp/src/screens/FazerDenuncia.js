@@ -1,22 +1,23 @@
 import React from "react"
-import { SafeAreaView, StyleSheet, TouchableOpacity, View, Image, Text } from "react-native"
+import { StyleSheet, TouchableOpacity, View, Image, Text } from "react-native"
 import BotaoIconeTexto from "../components/BotaoIconeTexto"
+import { LinearGradient } from 'expo-linear-gradient'
 
 const FazerDenuncia = ({ navigation }) => {
   const { container, wrapperDenuncia, textoDenuncia, wrapperOutraOpcao, TextoOutraOpcao, sombra, logo, header,logoPrefeitura, textoVig, traco } = styles
   return (
-      <SafeAreaView style={container}>
+      <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
         <View style={header}>
           <Image source={require('../../assets/logoJuazeiro2.png')} style={logo}/>
           <Image />
           <Image source={require('../../assets/logoPrefeitura.png')} style={logoPrefeitura}/>
           <Image />
           <View style={traco}></View>
-          <Text style={textoVig}>Vigilância em Saúde</Text>
+          <Text style={textoVig}>Núcleo de Endemias</Text>
         </View>
 
         <TouchableOpacity style={[wrapperDenuncia, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
-          <BotaoIconeTexto nomeIcone={"alert-triangle"} tamanhoIcone={110} corItem={'white'} textoStyle={textoDenuncia} texto={'Reportar Problema'} />
+          <BotaoIconeTexto nomeIcone={"alert-triangle"} tamanhoIcone={110} corItem={'#BE4048'} textoStyle={textoDenuncia} texto={'Reportar Problema'} />
         </TouchableOpacity>
 
         <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => navigation.navigate('VerMapa')}>
@@ -26,7 +27,7 @@ const FazerDenuncia = ({ navigation }) => {
         <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
           <BotaoIconeTexto nomeIcone={"instagram"} tamanhoIcone={47} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Instagram'}/>
         </TouchableOpacity>
-      </SafeAreaView>
+      </LinearGradient>
   )
 }
 
@@ -39,12 +40,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#637EFF'
   },
   wrapperDenuncia: {
-    backgroundColor: '#3F45B6',
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 350, 
-    height: 360,
-    borderRadius: 5,
+    width: 310, 
+    height: 285,
+    borderRadius: 10,
     gap: 10
   },
   sombra: {
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   },
   textoDenuncia: {
     fontSize: 35,
-    color: 'white',
+    color: '#BE4048',
     width: 175,
     textAlign: 'center',
   },
@@ -61,8 +62,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
-    borderRadius: 5,
-    width: 350,
+    borderRadius: 10,
+    width: 310,
     height: 75,
     gap: 15
   },
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    width: 350,
+    width: 330,
     height: 65, 
     justifyContent: 'space-between',
     alignItems: 'center'

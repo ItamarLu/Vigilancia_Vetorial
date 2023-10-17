@@ -1,22 +1,23 @@
 import React, { useState } from "react"
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View, ScrollView, Image } from "react-native"
+import { StyleSheet, Text, TouchableOpacity, View, ScrollView, Image } from "react-native"
 import TextInputText from "../components/TextInputText"
 import { Feather } from '@expo/vector-icons'
 import { GetImageLibrary } from "../hooks/GetImageLibrary"
 import { GetImageCamera } from "../hooks/GetImageCamera"
 import VerMapa from "../components/VerMapa"
 import IconeMotivo from "../components/IconeMotivo"
+import { LinearGradient } from 'expo-linear-gradient'
 
 const DadosDenuncia = ({ route, navigation }) => {
   const { container, wrapperTitle, textoDenuncia, nomeDenuncia, wrapperLista, botaoEnviar, textoEnv, sectionHeader, inputTexto, botaoImagemWrap, botaoImagem, imagePreview, containerMapa, scrollStyle} = styles
   const { motivo } = route.params
   const [image, setImage] = useState()
   return (
-    <SafeAreaView style={container}>
+    <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
       <View style={wrapperTitle}>
         <IconeMotivo motivo={motivo}/>
         <View>
-          <Text style={textoDenuncia}>Denúncia de</Text>
+          <Text style={textoDenuncia}>Ocorrência de</Text>
           <Text style={[textoDenuncia, nomeDenuncia]}>{motivo}</Text>
         </View>
       </View>
@@ -24,6 +25,8 @@ const DadosDenuncia = ({ route, navigation }) => {
       <View style={wrapperLista}>
         <ScrollView>
           <View style={scrollStyle}>
+              <TextInputText headerStyle={sectionHeader} text={'Nome'} textInputStyle={inputTexto} />
+
             <View>
               <Text style={sectionHeader}>{'Imagem'}</Text>
               
@@ -44,8 +47,6 @@ const DadosDenuncia = ({ route, navigation }) => {
               </View>
             </View>
 
-            <TextInputText headerStyle={sectionHeader} text={'Nome'} textInputStyle={inputTexto} />
-
             <View>
               <Text style={sectionHeader}>Localização</Text>
               <View style={containerMapa}>
@@ -59,7 +60,7 @@ const DadosDenuncia = ({ route, navigation }) => {
       <TouchableOpacity style={botaoEnviar} onPress={() => navigation.navigate('DenunciaFeita')}>
         <Text style={textoEnv}>Enviar</Text>
       </TouchableOpacity>
-    </SafeAreaView>
+    </LinearGradient>
   )
 }
 
@@ -78,23 +79,23 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   textoDenuncia: {
-    fontSize: 37,
+    fontSize: 33,
     color: 'white'
   },
   nomeDenuncia: {
     fontWeight: '700'
   },
   wrapperLista: {
-    width: 330,
+    width: 310,
     height: 400
   },
   scrollStyle: {
     gap: 20
   },
   botaoEnviar: {
-    backgroundColor: '#3F45B6',
-    width: 330,
-    height: 100,
+    backgroundColor: '#06417B',
+    width: 310,
+    height: 95,
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
     width: 70,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#3F45B6',
+    backgroundColor: '#06417B',
     elevation: 7
   },
   imagePreview: {

@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   imagemPadd: {
     width: 80,
     height: 80,
-    backgroundColor: '#3F45B6',
+    backgroundColor: '#06417B',
     borderRadius: 5,
     display: 'flex',
     justifyContent: 'center',
