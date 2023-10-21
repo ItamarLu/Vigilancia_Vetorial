@@ -10,7 +10,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 import {  useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold } from '@expo-google-fonts/poppins'
 
 const DadosDenuncia = ({ route, navigation }) => {
-  const { container, wrapperTitle, textoDenuncia, nomeDenuncia, wrapperLista, botaoEnviar, textoEnv, sectionHeader, inputTexto, botaoImagemWrap, botaoImagem, imagePreview, containerMapa, scrollStyle} = styles
+  const { container, wrapperTitle, textoDenuncia, nomeDenuncia, wrapperLista, botaoEnviar, textoEnv, sectionHeader, inputTexto, botaoImagemWrap, botaoImagem, imagePreview, containerMapa, scrollStyle, textoIcone} = styles
 
   const { motivo } = route.params
   const [image, setImage] = useState()
@@ -27,7 +27,12 @@ const DadosDenuncia = ({ route, navigation }) => {
   return (
     <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
       <View style={wrapperTitle}>
+        {image ? 
+        <Image source={{ uri: image }} style={imagePreview}/> 
+        : 
         <IconeMotivo motivo={motivo}/>
+        }
+        
         <View>
           <Text style={textoDenuncia}>Ocorrência de</Text>
           <Text style={[textoDenuncia, nomeDenuncia]}>{motivo}</Text>
@@ -46,15 +51,18 @@ const DadosDenuncia = ({ route, navigation }) => {
                   const uriValue = await GetImageCamera()
                   setImage(uriValue)
                 }}>
-                  <Feather name="camera" size={40} color="white" />
+                  <Text style={textoIcone}>Tirar{"\n"}Foto</Text>
+                  <Feather name="camera" size={40} color="#3F45B6" />
                 </TouchableOpacity>
                 <TouchableOpacity style={botaoImagem} onPress={async () => {
                   const uriValue = await GetImageLibrary()
                   setImage(uriValue)
                 }}>
-                  <Feather name="folder" size={40} color="white" />
+                  <Text style={textoIcone}>Fazer{"\n"}Upload</Text>
+                  <Feather name="folder" size={40} color="#3F45B6" />
                 </TouchableOpacity>
-                <Image source={{ uri: image }} style={imagePreview}/>
+                {// <Image source={{ uri: image }} style={imagePreview}/>
+                }
               </View>
             </View>
 
@@ -139,13 +147,24 @@ const styles = StyleSheet.create({
     gap: 10
   },
   botaoImagem: {
+    flexDirection: 'row',
     borderRadius: 5,
     height: 70,
-    width: 70,
+    width: 150,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#06417B',
-    elevation: 7
+    backgroundColor: 'white',
+    elevation: 7,
+    gap: 10
+  },
+  textoIcone: {
+    color: '#3F45B6',
+    fontFamily: 'Poppins_400Regular',
+    fontSize: 20,
+    paddingTop: 5,
+    textAlign: 'center',
+    width: 72,
+    lineHeight: 25
   },
   imagePreview: {
     borderWidth: 3,
