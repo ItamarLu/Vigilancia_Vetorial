@@ -1,10 +1,11 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import ScreensTabs from './src/components/ScreensTabs'
 import { GetLocation } from './src/hooks/GetLocation'
 import ErrorItem from './src/components/ErrorItem'
 import LoadingItem from './src/components/LoadingItem'
+import { LinearGradient } from 'expo-linear-gradient'
 
 const App = () => {
   const [loading, error] = GetLocation()
@@ -17,13 +18,13 @@ const App = () => {
     )
   }
   return (
-    <View style={styles.container}>
+    <LinearGradient colors={['#093F78', '#017DFF']} style={styles.container}>
       {error ? (
         <ErrorItem />
       ) : (
         <LoadingItem />
       )}
-    </View>
+    </LinearGradient>
   )
 }
 

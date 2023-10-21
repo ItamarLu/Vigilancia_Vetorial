@@ -37,13 +37,13 @@ const IconeMotivo = (props) => {
 
 const styles = StyleSheet.create({
   iconeStyle: {
-    width: 65, 
-    height: 65,
+    width: 55, 
+    height: 55,
     tintColor: '#06417B'
   },
   iconePadd: {
-    width: 85,
-    height: 85,
+    width: 75,
+    height: 75,
     backgroundColor: 'white',
     borderRadius: 5,
     display: 'flex',

@@ -2,9 +2,19 @@ import React from "react"
 import { StyleSheet, TouchableOpacity, View, Image, Text } from "react-native"
 import BotaoIconeTexto from "../components/BotaoIconeTexto"
 import { LinearGradient } from 'expo-linear-gradient'
+import {  useFonts, Poppins_400Regular, Poppins_500Medium } from '@expo-google-fonts/poppins'
 
 const FazerDenuncia = ({ navigation }) => {
   const { container, wrapperDenuncia, textoDenuncia, wrapperOutraOpcao, TextoOutraOpcao, sombra, logo, header,logoPrefeitura, textoVig, traco } = styles
+
+  let [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium
+  })
+  if (!fontsLoaded) {
+    return null
+  }
+
   return (
       <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
         <View style={header}>
@@ -17,7 +27,7 @@ const FazerDenuncia = ({ navigation }) => {
         </View>
 
         <TouchableOpacity style={[wrapperDenuncia, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
-          <BotaoIconeTexto nomeIcone={"alert-triangle"} tamanhoIcone={110} corItem={'#BE4048'} textoStyle={textoDenuncia} texto={'Reportar Problema'} />
+          <BotaoIconeTexto nomeIcone={"alert-triangle"} tamanhoIcone={110} corItem={'#BE4048'} textoStyle={textoDenuncia} texto={'Reportar problema'} />
         </TouchableOpacity>
 
         <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => navigation.navigate('VerMapa')}>
@@ -36,7 +46,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 30,
+    gap: 35,
     backgroundColor: '#637EFF'
   },
   wrapperDenuncia: {
@@ -52,10 +62,13 @@ const styles = StyleSheet.create({
     elevation: 7
   },
   textoDenuncia: {
-    fontSize: 35,
+    fontSize: 34,
     color: '#BE4048',
     width: 175,
-    textAlign: 'center',
+    textAlign: 'center', 
+    fontFamily: 'Poppins_500Medium',
+    lineHeight: 40,
+    paddingTop: 5
   },
   wrapperOutraOpcao: {
     flexDirection: 'row',
@@ -69,7 +82,9 @@ const styles = StyleSheet.create({
   },
   TextoOutraOpcao: {
     color: '#3F45B6',
-    fontSize: 32
+    fontSize: 30, 
+    fontFamily: 'Poppins_400Regular',
+    paddingTop: 5
   },
   header: {
     flexDirection: 'row',
@@ -92,9 +107,12 @@ const styles = StyleSheet.create({
   },
   textoVig: {
     color: 'white',
-    fontSize: 25,
+    fontSize: 23,
     width: 120,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Poppins_400Regular',
+    lineHeight: 30,
+    paddingTop: 3
   },
   traco: {
     width: 1,

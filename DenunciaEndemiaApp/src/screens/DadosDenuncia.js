@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { StyleSheet, Text, TouchableOpacity, View, ScrollView, Image } from "react-native"
+import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native"
 import TextInputText from "../components/TextInputText"
 import { Feather } from '@expo/vector-icons'
 import { GetImageLibrary } from "../hooks/GetImageLibrary"
@@ -7,11 +7,23 @@ import { GetImageCamera } from "../hooks/GetImageCamera"
 import VerMapa from "../components/VerMapa"
 import IconeMotivo from "../components/IconeMotivo"
 import { LinearGradient } from 'expo-linear-gradient'
+import {  useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold } from '@expo-google-fonts/poppins'
 
 const DadosDenuncia = ({ route, navigation }) => {
   const { container, wrapperTitle, textoDenuncia, nomeDenuncia, wrapperLista, botaoEnviar, textoEnv, sectionHeader, inputTexto, botaoImagemWrap, botaoImagem, imagePreview, containerMapa, scrollStyle} = styles
+
   const { motivo } = route.params
   const [image, setImage] = useState()
+
+  let [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_600SemiBold
+  })
+  if (!fontsLoaded) {
+    return null
+  }
+
   return (
     <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
       <View style={wrapperTitle}>
@@ -23,7 +35,6 @@ const DadosDenuncia = ({ route, navigation }) => {
       </View>
       
       <View style={wrapperLista}>
-        <ScrollView>
           <View style={scrollStyle}>
               <TextInputText headerStyle={sectionHeader} text={'Nome'} textInputStyle={inputTexto} />
 
@@ -54,7 +65,6 @@ const DadosDenuncia = ({ route, navigation }) => {
               </View>
             </View>
           </View>
-        </ScrollView>
       </View>
 
       <TouchableOpacity style={botaoEnviar} onPress={() => navigation.navigate('DenunciaFeita')}>
@@ -69,34 +79,36 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 40,
+    gap: 30,
     backgroundColor: '#637EFF'
   },
   wrapperTitle: {
     width: 310,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 70
   },
   textoDenuncia: {
-    fontSize: 33,
-    color: 'white'
+    fontSize: 30,
+    color: 'white',
+    fontFamily: 'Poppins_400Regular',
+    lineHeight: 40
   },
   nomeDenuncia: {
-    fontWeight: '700'
+    fontFamily: 'Poppins_600SemiBold'
   },
   wrapperLista: {
-    width: 310,
-    height: 400
+    width: 310
   },
   scrollStyle: {
-    gap: 20
+    gap: 15
   },
   botaoEnviar: {
     backgroundColor: '#06417B',
     width: 310,
     height: 95,
-    borderRadius: 5,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 7
@@ -104,26 +116,27 @@ const styles = StyleSheet.create({
   textoEnv: {
     color: 'white',
     fontSize: 45,
-    fontWeight: '500'
+    fontFamily: 'Poppins_500Medium',
+    paddingTop: 10
   },
   sectionHeader: {
     fontSize: 28,
-    color: 'white'
+    color: 'white',
+    fontFamily: 'Poppins_400Regular'
   },
   inputTexto: {
-    borderColor: '#e6e6e6',
-    borderWidth: 2,
     borderRadius: 5,
     backgroundColor: 'white',
-    height: 62,
-    padding: 10,
-    marginTop: 5,
-    fontSize: 20
+    height: 70,
+    paddingLeft: 15,
+    fontSize: 20,
+    fontFamily: 'Poppins_400Regular',
+    paddingTop: 5,
+    color: '#06417B'
   },
   botaoImagemWrap: {
     flexDirection: 'row',
-    gap: 10,
-    marginTop: 5
+    gap: 10
   },
   botaoImagem: {
     borderRadius: 5,
@@ -144,7 +157,7 @@ const styles = StyleSheet.create({
     borderColor: '#e6e6e6',
     borderWidth: 2,
     backgroundColor: 'white',
-    width: 330,
+    width: 310,
     height: 200
   }
 })

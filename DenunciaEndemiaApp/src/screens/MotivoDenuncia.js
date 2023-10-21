@@ -2,15 +2,25 @@ import React from "react"
 import { Text, StyleSheet, TouchableOpacity } from "react-native"
 import BotaoImagemTexto from "../components/BotaoImagemTexto"
 import { LinearGradient } from 'expo-linear-gradient'
+import {  useFonts, Poppins_400Regular, Poppins_500Medium } from '@expo-google-fonts/poppins'
 
 const MotivoDenuncia = ({ navigation }) => {
   const { container, textoMotivo, wrapperMotivo, botaoTexto } = styles
+
+  let [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium
+  })
+  if (!fontsLoaded) {
+    return null
+  }
+
   return (
     <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
       <Text style={textoMotivo}>Qual o motivo do seu contato?</Text>
       
       <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Aedes A.'})}>
-        <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Aedes \nAegipty'} fonteImagem={'../../icons/mosquito.png'} />
+        <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Aedes \nAegypti'} fonteImagem={'../../icons/mosquito.png'} />
       </TouchableOpacity>
       
       <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Barbeiro'})}>
@@ -34,14 +44,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 20,
+    gap: 25,
     backgroundColor: '#637EFF'
   },
   textoMotivo: {
-    fontSize: 40,
+    fontSize: 38,
     width: 340,
     color: 'white',
-    marginBottom: 20
+    marginBottom: 15,
+    fontFamily: 'Poppins_500Medium',
+    paddingTop: 5,
+    lineHeight: 45
   },
   wrapperMotivo: {
     flexDirection: 'row',
@@ -56,7 +69,10 @@ const styles = StyleSheet.create({
   },
   botaoTexto: {
     color: '#06417B',
-    fontSize: 30
+    fontSize: 28,
+    fontFamily: 'Poppins_400Regular',
+    paddingTop: 5,
+    lineHeight: 35
   }
 })
 export default MotivoDenuncia

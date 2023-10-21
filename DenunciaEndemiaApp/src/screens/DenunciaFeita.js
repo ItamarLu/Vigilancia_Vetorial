@@ -2,9 +2,20 @@ import React from "react"
 import { Text, TouchableOpacity, StyleSheet, View } from "react-native"
 import { FontAwesome5 } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
+import {  useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold } from '@expo-google-fonts/poppins'
 
 const DenunciaFeita = ({ navigation }) => {
   const { container, textoEnvi, textoAgra, textWrap, botaoVoltar, textoBotao, checkTextContainer, iconWrap } = styles
+
+  let [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_600SemiBold
+  })
+  if (!fontsLoaded) {
+    return null
+  }
+
   return (
     <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
       <View style={checkTextContainer}>
@@ -46,20 +57,22 @@ const styles = StyleSheet.create({
   textWrap: {
     width: 280,
     alignItems: 'center',
-    marginTop: 30,
-    gap: 20
+    marginTop: 20,
+    gap: 5
   },
   textoEnvi: {
     color: 'white',
-    fontSize: 45,
+    fontSize: 43,
     textAlign: 'center',
-    lineHeight: 45,
-    fontWeight: '600'
+    fontFamily: 'Poppins_600SemiBold',
+    lineHeight: 48,
+    height: 100,
+    paddingTop: 5
   },
   textoAgra: {
     color: 'white',
-    fontSize: 30,
-    lineHeight: 30
+    fontSize: 28,
+    fontFamily: 'Poppins_400Regular'
   },
   botaoVoltar: {
     width: 310,
@@ -74,7 +87,8 @@ const styles = StyleSheet.create({
   textoBotao: {
     color: 'white',
     fontSize: 30,
-    fontWeight: '500'
+    fontFamily: 'Poppins_500Medium',
+    paddingTop: 5
   }
 })
 
