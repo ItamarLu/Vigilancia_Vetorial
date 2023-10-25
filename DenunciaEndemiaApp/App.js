@@ -6,11 +6,23 @@ import { GetLocation } from './src/hooks/GetLocation'
 import ErrorItem from './src/components/ErrorItem'
 import LoadingItem from './src/components/LoadingItem'
 import { LinearGradient } from 'expo-linear-gradient'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const App = () => {
-  const [loading, error] = GetLocation()
+  const [loading, error, location] = GetLocation()
+  
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value)
+      await AsyncStorage.setItem('location-data', jsonValue)
+    } catch (e) {
+      // saving error
+    }
+  }
 
   if (!loading && !error) {
+    storeData(location)
+
     return (
       <NavigationContainer>
         <ScreensTabs />

@@ -1,35 +1,33 @@
 import React from "react"
-import { GetLocation } from "../hooks/GetLocation"
 import MapView, { Marker } from 'react-native-maps'
 import { StyleSheet } from "react-native"
+import { GetLatiLongi } from "../hooks/GetLatiLongi"
 
 const VerMapa = () => {
   const { map} = styles
-  const [loading, error, location] = GetLocation()
+  const [latitude, longitude] = GetLatiLongi()
 
-  
-  return (
-    <>
-      {
-        location && 
+  if (latitude && longitude) {
+    return (
+      <>
         <MapView 
           style={map}
           initialRegion={{
-            latitude: location.coords.latitude,
-            longitude: location.coords.longitude,
+            latitude: latitude,
+            longitude: longitude,
             latitudeDelta: 0.005,
             longitudeDelta: 0.005
           }}
         >
-          <Marker coordinate={{
-              latitude: location.coords.latitude,
-              longitude: location.coords.longitude
+          <Marker draggable coordinate={{
+              latitude: latitude,
+              longitude: longitude
             }}
           />
-        </MapView>
-      }
-    </>
-  )
+        </MapView> 
+      </>
+    )
+  }
 }
 
 const styles = StyleSheet.create({

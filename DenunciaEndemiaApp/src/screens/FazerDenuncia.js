@@ -1,5 +1,5 @@
 import React from "react"
-import { StyleSheet, TouchableOpacity, View, Image, Text } from "react-native"
+import { StyleSheet, TouchableOpacity, View, Image, Text, Linking } from "react-native"
 import BotaoIconeTexto from "../components/BotaoIconeTexto"
 import { LinearGradient } from 'expo-linear-gradient'
 import {  useFonts, Poppins_400Regular, Poppins_500Medium } from '@expo-google-fonts/poppins'
@@ -13,6 +13,10 @@ const FazerDenuncia = ({ navigation }) => {
   })
   if (!fontsLoaded) {
     return null
+  }
+
+  const openURL = (url) => {
+    Linking.openURL(url).catch((err) => console.error('An error occurred', err))
   }
 
   return (
@@ -30,7 +34,7 @@ const FazerDenuncia = ({ navigation }) => {
           <BotaoIconeTexto nomeIcone={"alert-triangle"} tamanhoIcone={110} corItem={'#BE4048'} textoStyle={textoDenuncia} texto={'Reportar problema'} />
         </TouchableOpacity>
 
-        <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => navigation.navigate('VerMapa')}>
+        <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => openURL('https://www.juazeirodonorte.ce.gov.br/')}>
           <BotaoIconeTexto nomeIcone={"globe"} tamanhoIcone={47} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Nosso site'}/>
         </TouchableOpacity>
 
