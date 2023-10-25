@@ -38,7 +38,7 @@ const FazerDenuncia = ({ navigation }) => {
           <BotaoIconeTexto nomeIcone={"globe"} tamanhoIcone={47} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Nosso site'}/>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
+        <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => openURL('https://www.instagram.com/prefjuazeirodonorte/?hl=pt-br')}>
           <BotaoIconeTexto nomeIcone={"instagram"} tamanhoIcone={47} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Instagram'}/>
         </TouchableOpacity>
       </LinearGradient>
