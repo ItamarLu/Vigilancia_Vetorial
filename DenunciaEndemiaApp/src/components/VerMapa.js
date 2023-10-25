@@ -4,8 +4,10 @@ import MapView, { Marker } from 'react-native-maps'
 import { StyleSheet } from "react-native"
 
 const VerMapa = () => {
-  const { map } = styles
+  const { map} = styles
   const [loading, error, location] = GetLocation()
+
+  
   return (
     <>
       {
@@ -19,8 +21,7 @@ const VerMapa = () => {
             longitudeDelta: 0.005
           }}
         >
-          <Marker 
-            coordinate={{
+          <Marker coordinate={{
               latitude: location.coords.latitude,
               longitude: location.coords.longitude
             }}
@@ -37,4 +38,5 @@ const styles = StyleSheet.create({
     height:'100%'
   }
 })
+
 export default VerMapa

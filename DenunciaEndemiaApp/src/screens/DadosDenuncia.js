@@ -8,13 +8,19 @@ import VerMapa from "../components/VerMapa"
 import IconeMotivo from "../components/IconeMotivo"
 import { LinearGradient } from 'expo-linear-gradient'
 import {  useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold } from '@expo-google-fonts/poppins'
+import Modal from "react-native-modal"
 
 const DadosDenuncia = ({ route, navigation }) => {
-  const { container, wrapperTitle, textoDenuncia, nomeDenuncia, wrapperLista, botaoEnviar, textoEnv, sectionHeader, inputTexto, botaoImagemWrap, botaoImagem, imagePreview, containerMapa, scrollStyle, textoIcone} = styles
+  const { container, wrapperTitle, textoDenuncia, nomeDenuncia, wrapperLista, botaoEnviar, textoEnv, sectionHeader, inputTexto, botaoImagemWrap, botaoImagem, imagePreview, containerMapa, scrollStyle, textoIcone, imageModal, viewModal} = styles
 
   const { motivo } = route.params
   const [image, setImage] = useState()
 
+  const [isModalVisible, setModalVisible] = useState(false)
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible)
+  }
+  
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_500Medium,
@@ -27,8 +33,12 @@ const DadosDenuncia = ({ route, navigation }) => {
   return (
     <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
       <View style={wrapperTitle}>
-        {image ? 
-        <Image source={{ uri: image }} style={imagePreview}/> 
+        {image ?
+        <TouchableOpacity onPress={() => {
+          toggleModal()
+        }}> 
+          <Image source={{ uri: image }} style={imagePreview}/>
+        </TouchableOpacity> 
         : 
         <IconeMotivo motivo={motivo}/>
         }
@@ -61,8 +71,6 @@ const DadosDenuncia = ({ route, navigation }) => {
                   <Text style={textoIcone}>Fazer{"\n"}Upload</Text>
                   <Feather name="folder" size={40} color="#3F45B6" />
                 </TouchableOpacity>
-                {// <Image source={{ uri: image }} style={imagePreview}/>
-                }
               </View>
             </View>
 
@@ -78,6 +86,17 @@ const DadosDenuncia = ({ route, navigation }) => {
       <TouchableOpacity style={botaoEnviar} onPress={() => navigation.navigate('DenunciaFeita')}>
         <Text style={textoEnv}>Enviar</Text>
       </TouchableOpacity>
+
+      <Modal isVisible={isModalVisible}
+      onBackdropPress={() => setModalVisible(false)}
+      onBackButtonPress ={() => setModalVisible(false)}
+      animationIn = 'fadeIn'
+      animationOutTiming = {1}
+      >
+        <View style={viewModal}>
+          <Image source={{ uri: image }} style={imageModal}/> 
+        </View>
+      </Modal>
     </LinearGradient>
   )
 }
@@ -167,17 +186,32 @@ const styles = StyleSheet.create({
     lineHeight: 25
   },
   imagePreview: {
-    borderWidth: 3,
     borderRadius: 5,
-    height: 70,
-    width: 70
+    height: 75,
+    width: 75,
+    borderColor: 'white',
+    borderWidth: 1,
+    objectFit: 'contain'
   },
   containerMapa: {
-    borderColor: '#e6e6e6',
-    borderWidth: 2,
     backgroundColor: 'white',
+    borderColor: 'white',
+    borderWidth: 3,
+    borderStyle: 'solid',
+    borderRadius: 5,
     width: 310,
     height: 200
+  },
+  viewModal: {
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  imageModal: {
+    width: 350,
+    height: 350,
+    objectFit: 'contain'
   }
 })
 export default DadosDenuncia
