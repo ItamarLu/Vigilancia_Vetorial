@@ -20,28 +20,28 @@ const FazerDenuncia = ({ navigation }) => {
   }
 
   return (
-      <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
-        <View style={header}>
-          <Image source={require('../../assets/logoJuazeiro2.png')} style={logo}/>
-          <Image />
-          <Image source={require('../../assets/logoPrefeitura.png')} style={logoPrefeitura}/>
-          <Image />
-          <View style={traco}></View>
-          <Text style={textoVig}>Núcleo de Endemias</Text>
-        </View>
+    <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
+      <View style={header}>
+        <Image source={require('../../assets/logoJuazeiro2.png')} style={logo}/>
+        <Image />
+        <Image source={require('../../assets/logoPrefeitura.png')} style={logoPrefeitura}/>
+        <Image />
+        <View style={traco}></View>
+        <Text style={textoVig}>Núcleo de Endemias</Text>
+      </View>
 
-        <TouchableOpacity style={[wrapperDenuncia, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
-          <BotaoIconeTexto nomeIcone={"alert-triangle"} tamanhoIcone={110} corItem={'#BE4048'} textoStyle={textoDenuncia} texto={'Reportar problema'} />
-        </TouchableOpacity>
+      <TouchableOpacity style={[wrapperDenuncia, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
+        <BotaoIconeTexto nomeIcone={"alert-triangle"} tamanhoIcone={110} corItem={'#BE4048'} textoStyle={textoDenuncia} texto={'Reportar problema'} />
+      </TouchableOpacity>
 
-        <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => openURL('https://www.juazeirodonorte.ce.gov.br/')}>
-          <BotaoIconeTexto nomeIcone={"globe"} tamanhoIcone={47} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Nosso site'}/>
-        </TouchableOpacity>
+      <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => openURL('https://www.juazeirodonorte.ce.gov.br/')}>
+        <BotaoIconeTexto nomeIcone={"globe"} tamanhoIcone={47} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Nosso site'}/>
+      </TouchableOpacity>
 
-        <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => openURL('https://www.instagram.com/prefjuazeirodonorte/?hl=pt-br')}>
-          <BotaoIconeTexto nomeIcone={"instagram"} tamanhoIcone={47} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Instagram'}/>
-        </TouchableOpacity>
-      </LinearGradient>
+      <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => openURL('https://www.instagram.com/prefjuazeirodonorte/?hl=pt-br')}>
+        <BotaoIconeTexto nomeIcone={"instagram"} tamanhoIcone={47} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Instagram'}/>
+      </TouchableOpacity>
+    </LinearGradient>
   )
 }
 

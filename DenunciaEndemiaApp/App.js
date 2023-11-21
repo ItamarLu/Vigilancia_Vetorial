@@ -10,7 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const App = () => {
   const [loading, error, location] = GetLocation()
-  
+
   const storeData = async (value) => {
     try {
       const jsonValue = JSON.stringify(value)
@@ -49,4 +49,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#637EFF'
   }
 })
+
 export default App

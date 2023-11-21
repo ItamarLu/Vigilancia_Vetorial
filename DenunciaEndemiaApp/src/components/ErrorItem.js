@@ -1,23 +1,25 @@
 import React from "react"
-import { View, Text, StyleSheet} from 'react-native'
+import { Text, StyleSheet} from 'react-native'
 import { Feather } from '@expo/vector-icons'
+import { LinearGradient } from 'expo-linear-gradient'
 
-const ErrorItem = () => {
+const ErrorItem = ({ onRetry }) => {
   const { container, errorMessage} = styles
   return (
-    <View style={container}>
-      <Text style={errorMessage}>Desculpa, ocorreu algum erro</Text>
+    <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
+      <Text style={errorMessage}>Não foi possível obter sua localização</Text>
       <Feather name={'frown'} size={100} color={'white'}/>
-    </View>
+      <Text style={errorMessage}>Por favor verifique sua conexão com a internet e tente abrir o aplicativo novamente</Text>
+    </LinearGradient>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    gap: 20
   },
   errorMessage: {
     fontSize: 30, 

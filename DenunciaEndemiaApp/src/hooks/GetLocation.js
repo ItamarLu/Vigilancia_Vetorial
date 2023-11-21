@@ -9,11 +9,20 @@ export const GetLocation = () => {
         setError('Permissão para acessar localização foi negada')
         return
       }
+
       try {
+        const timeoutId = setTimeout(() => {
+          setError('Tempo esgotado ao obter a localização')
+          setLoading(false)
+        }, 10000)
+
         let location = await Location.getCurrentPositionAsync({})
+
+        clearTimeout(timeoutId)
+
         setLocation(location)
       } catch(e) {
-        setError('Não foi possivel obter sua Localização')
+        setError('Não foi possível obter sua Localização')
       } finally {
         setLoading(false)
       }
