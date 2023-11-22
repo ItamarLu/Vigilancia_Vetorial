@@ -9,6 +9,7 @@ import IconeMotivo from "../components/IconeMotivo"
 import { LinearGradient } from 'expo-linear-gradient'
 import {  useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold } from '@expo-google-fonts/poppins'
 import Modal from "react-native-modal"
+import { GetLatiLongi } from "../hooks/GetLatiLongi"
 
 const DadosDenuncia = ({ route, navigation }) => {
   const { container, wrapperTitle, textoDenuncia, nomeDenuncia, wrapperLista, botaoEnviar, textoEnv, sectionHeader, inputTexto, botaoImagemWrap, botaoImagem, imagePreview, containerMapa, scrollStyle, textoIcone, imageModal, viewModal} = styles
@@ -21,6 +22,8 @@ const DadosDenuncia = ({ route, navigation }) => {
     setModalVisible(!isModalVisible)
   }
   
+  const [latitude, longitude] = GetLatiLongi()
+
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_500Medium,
@@ -83,7 +86,13 @@ const DadosDenuncia = ({ route, navigation }) => {
           </View>
       </View>
 
-      <TouchableOpacity style={botaoEnviar} onPress={() => navigation.navigate('DenunciaFeita')}>
+      <TouchableOpacity style={botaoEnviar} onPress={() => {
+        // Enviar informações para o dashboard
+        console.log('Informações Enviadas')
+        console.log(`Imagem: ${image}`)
+        console.log(`Latitude: ${latitude} - Longitude: ${longitude}`)
+        navigation.navigate('DenunciaFeita')
+      }}>
         <Text style={textoEnv}>Enviar</Text>
       </TouchableOpacity>
 

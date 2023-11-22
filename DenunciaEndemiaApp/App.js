@@ -31,15 +31,10 @@ const App = () => {
   }
   return (
     <LinearGradient colors={['#093F78', '#017DFF']} style={styles.container}>
-      {error ? (
-        <ErrorItem />
-      ) : (
-        <LoadingItem />
-      )}
+      {error ? <ErrorItem /> : <LoadingItem />}
     </LinearGradient>
   )
 }
-
 
 const styles = StyleSheet.create({
   container: {

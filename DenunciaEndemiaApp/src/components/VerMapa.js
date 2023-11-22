@@ -1,11 +1,33 @@
-import React from "react"
+import React, {useState} from "react"
 import MapView, { Marker } from 'react-native-maps'
 import { StyleSheet } from "react-native"
 import { GetLatiLongi } from "../hooks/GetLatiLongi"
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const VerMapa = () => {
-  const { map} = styles
+  const { map } = styles
   const [latitude, longitude] = GetLatiLongi()
+
+  if (latitude && longitude) {
+    console.log(latitude)
+    console.log(longitude)
+  }
+
+  let coord = { 
+    coords:{
+      latitude,
+      longitude
+    }
+  }
+
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value)
+      await AsyncStorage.setItem('location-data', jsonValue)
+    } catch (e) {
+      // saving error
+    }
+  }
 
   if (latitude && longitude) {
     return (
@@ -19,10 +41,16 @@ const VerMapa = () => {
             longitudeDelta: 0.005
           }}
         >
-          <Marker draggable coordinate={{
+          <Marker draggable 
+            coordinate={{
               latitude: latitude,
               longitude: longitude
-            }}
+              }}
+            onDragEnd={e => {
+              coord.coords = e.nativeEvent.coordinate
+              console.log(coord)
+              storeData(coord) 
+              }}
           />
         </MapView> 
       </>
