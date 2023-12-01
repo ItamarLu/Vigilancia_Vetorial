@@ -19,19 +19,19 @@ const MotivoDenuncia = ({ navigation }) => {
     <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
       <Text style={textoMotivo}>Qual o motivo do seu contato?</Text>
       
-      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Aedes A.'})}>
+      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Aedes A.', numero: 0})}>
         <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Aedes \nAegypti'} fonteImagem={'../../icons/mosquito.png'} />
       </TouchableOpacity>
       
-      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Barbeiro'})}>
+      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Barbeiro', numero: 1})}>
         <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Barbeiro'} fonteImagem={'../../icons/bug.png'} />
       </TouchableOpacity>
 
-      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Casa/Terreno'})}>
+      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Casa/Terreno', numero: 2})}>
         <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Casa fechada, \nTerreno baldio'} fonteImagem={'../../icons/lixo.png'} />
       </TouchableOpacity>
 
-      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Escorpião'})}>
+      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Escorpião', numero: 3})}>
         <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Escorpião'} fonteImagem={'../../icons/scorpion.png'} />
       </TouchableOpacity>
 

@@ -14,7 +14,7 @@ import { GetLatiLongi } from "../hooks/GetLatiLongi"
 const DadosDenuncia = ({ route, navigation }) => {
   const { container, wrapperTitle, textoDenuncia, nomeDenuncia, wrapperLista, botaoEnviar, textoEnv, sectionHeader, inputTexto, botaoImagemWrap, botaoImagem, imagePreview, containerMapa, scrollStyle, textoIcone, imageModal, viewModal} = styles
 
-  const { motivo } = route.params
+  const { motivo, numero } = route.params
   const [image, setImage] = useState()
 
   const [isModalVisible, setModalVisible] = useState(false)
@@ -91,6 +91,7 @@ const DadosDenuncia = ({ route, navigation }) => {
         console.log('Informações Enviadas')
         console.log(`Imagem: ${image}`)
         console.log(`Latitude: ${latitude} - Longitude: ${longitude}`)
+        console.log(`Número do motivo: ${numero}`)
         navigation.navigate('DenunciaFeita')
       }}>
         <Text style={textoEnv}>Enviar</Text>
