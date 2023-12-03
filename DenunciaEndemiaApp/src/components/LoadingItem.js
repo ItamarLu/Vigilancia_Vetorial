@@ -1,12 +1,12 @@
-import React from "react"
+import React from 'react'
 import { Image, StyleSheet, ActivityIndicator } from 'react-native'
 
 const LoadingItem = () => {
   const { logo } = styles
   return (
-    <> 
-      <Image source={require('../../assets/logoJuazeiro.png')} style={logo}/>
-      <ActivityIndicator size={'large'} color={'white'}/> 
+    <>
+      <Image source={require('../../assets/logoJuazeiro.png')} style={logo} />
+      <ActivityIndicator size={'large'} color={'white'} />
     </>
   )
 }

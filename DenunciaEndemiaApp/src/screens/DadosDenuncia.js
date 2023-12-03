@@ -1,18 +1,41 @@
-import React, { useState } from "react"
-import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native"
-import TextInputText from "../components/TextInputText"
+import React, { useState } from 'react'
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
+import TextInputText from '../components/TextInputText'
 import { Feather } from '@expo/vector-icons'
-import { GetImageLibrary } from "../hooks/GetImageLibrary"
-import { GetImageCamera } from "../hooks/GetImageCamera"
-import VerMapa from "../components/VerMapa"
-import IconeMotivo from "../components/IconeMotivo"
+import { GetImageLibrary } from '../hooks/GetImageLibrary'
+import { GetImageCamera } from '../hooks/GetImageCamera'
+import VerMapa from '../components/VerMapa'
+import IconeMotivo from '../components/IconeMotivo'
 import { LinearGradient } from 'expo-linear-gradient'
-import {  useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold } from '@expo-google-fonts/poppins'
-import Modal from "react-native-modal"
-import { GetLatiLongi } from "../hooks/GetLatiLongi"
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold
+} from '@expo-google-fonts/poppins'
+import Modal from 'react-native-modal'
+import { GetLatiLongi } from '../hooks/GetLatiLongi'
 
 const DadosDenuncia = ({ route, navigation }) => {
-  const { container, wrapperTitle, textoDenuncia, nomeDenuncia, wrapperLista, botaoEnviar, textoEnv, sectionHeader, inputTexto, botaoImagemWrap, botaoImagem, imagePreview, containerMapa, scrollStyle, textoIcone, imageModal, viewModal} = styles
+  const {
+    container,
+    wrapperTitle,
+    textoDenuncia,
+    nomeDenuncia,
+    wrapperLista,
+    botaoEnviar,
+    textoEnv,
+    sectionHeader,
+    inputTexto,
+    botaoImagemWrap,
+    botaoImagem,
+    imagePreview,
+    containerMapa,
+    scrollStyle,
+    textoIcone,
+    imageModal,
+    viewModal
+  } = styles
 
   const { motivo, numero } = route.params
   const [image, setImage] = useState()
@@ -21,8 +44,6 @@ const DadosDenuncia = ({ route, navigation }) => {
   const toggleModal = () => {
     setModalVisible(!isModalVisible)
   }
-  
-  const [latitude, longitude] = GetLatiLongi()
 
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -36,75 +57,89 @@ const DadosDenuncia = ({ route, navigation }) => {
   return (
     <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
       <View style={wrapperTitle}>
-        {image ?
-        <TouchableOpacity onPress={() => {
-          toggleModal()
-        }}> 
-          <Image source={{ uri: image }} style={imagePreview}/>
-        </TouchableOpacity> 
-        : 
-        <IconeMotivo motivo={motivo}/>
-        }
-        
+        {image ? (
+          <TouchableOpacity
+            onPress={() => {
+              toggleModal()
+            }}
+          >
+            <Image source={{ uri: image }} style={imagePreview} />
+          </TouchableOpacity>
+        ) : (
+          <IconeMotivo motivo={motivo} />
+        )}
+
         <View>
           <Text style={textoDenuncia}>Ocorrência de</Text>
           <Text style={[textoDenuncia, nomeDenuncia]}>{motivo}</Text>
         </View>
       </View>
-      
-      <View style={wrapperLista}>
-          <View style={scrollStyle}>
-              <TextInputText headerStyle={sectionHeader} text={'Nome'} textInputStyle={inputTexto} />
 
-            <View>
-              <Text style={sectionHeader}>{'Imagem'}</Text>
-              
-              <View style={botaoImagemWrap}>
-                <TouchableOpacity style={botaoImagem} onPress={async () => {
+      <View style={wrapperLista}>
+        <View style={scrollStyle}>
+          <TextInputText
+            headerStyle={sectionHeader}
+            text={'Nome'}
+            textInputStyle={inputTexto}
+          />
+
+          <View>
+            <Text style={sectionHeader}>{'Imagem'}</Text>
+
+            <View style={botaoImagemWrap}>
+              <TouchableOpacity
+                style={botaoImagem}
+                onPress={async () => {
                   const uriValue = await GetImageCamera()
                   setImage(uriValue)
-                }}>
-                  <Text style={textoIcone}>Tirar{"\n"}Foto</Text>
-                  <Feather name="camera" size={40} color="#3F45B6" />
-                </TouchableOpacity>
-                <TouchableOpacity style={botaoImagem} onPress={async () => {
+                }}
+              >
+                <Text style={textoIcone}>Tirar{'\n'}Foto</Text>
+                <Feather name="camera" size={40} color="#3F45B6" />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={botaoImagem}
+                onPress={async () => {
                   const uriValue = await GetImageLibrary()
                   setImage(uriValue)
-                }}>
-                  <Text style={textoIcone}>Fazer{"\n"}Upload</Text>
-                  <Feather name="folder" size={40} color="#3F45B6" />
-                </TouchableOpacity>
-              </View>
-            </View>
-
-            <View>
-              <Text style={sectionHeader}>Localização</Text>
-              <View style={containerMapa}>
-                <VerMapa />
-              </View>
+                }}
+              >
+                <Text style={textoIcone}>Fazer{'\n'}Upload</Text>
+                <Feather name="folder" size={40} color="#3F45B6" />
+              </TouchableOpacity>
             </View>
           </View>
+
+          <View>
+            <Text style={sectionHeader}>Localização</Text>
+            <View style={containerMapa}>
+              <VerMapa />
+            </View>
+          </View>
+        </View>
       </View>
 
-      <TouchableOpacity style={botaoEnviar} onPress={() => {
-        // Enviar informações para o dashboard
-        console.log('Informações Enviadas')
-        console.log(`Imagem: ${image}`)
-        console.log(`Latitude: ${latitude} - Longitude: ${longitude}`)
-        console.log(`Número do motivo: ${numero}`)
-        navigation.navigate('DenunciaFeita')
-      }}>
+      <TouchableOpacity
+        style={botaoEnviar}
+        onPress={() => {
+          navigation.navigate('DenunciaFeita', {
+            image,
+            numero
+          })
+        }}
+      >
         <Text style={textoEnv}>Enviar</Text>
       </TouchableOpacity>
 
-      <Modal isVisible={isModalVisible}
-      onBackdropPress={() => setModalVisible(false)}
-      onBackButtonPress ={() => setModalVisible(false)}
-      animationIn = 'fadeIn'
-      animationOutTiming = {1}
+      <Modal
+        isVisible={isModalVisible}
+        onBackdropPress={() => setModalVisible(false)}
+        onBackButtonPress={() => setModalVisible(false)}
+        animationIn="fadeIn"
+        animationOutTiming={1}
       >
         <View style={viewModal}>
-          <Image source={{ uri: image }} style={imageModal}/> 
+          <Image source={{ uri: image }} style={imageModal} />
         </View>
       </Modal>
     </LinearGradient>

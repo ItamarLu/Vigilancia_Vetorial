@@ -1,20 +1,15 @@
-import React, {useState} from "react"
+import React from 'react'
 import MapView, { Marker } from 'react-native-maps'
-import { StyleSheet } from "react-native"
-import { GetLatiLongi } from "../hooks/GetLatiLongi"
+import { StyleSheet } from 'react-native'
+import { GetLatiLongi } from '../hooks/GetLatiLongi'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const VerMapa = () => {
   const { map } = styles
   const [latitude, longitude] = GetLatiLongi()
 
-  if (latitude && longitude) {
-    console.log(latitude)
-    console.log(longitude)
-  }
-
-  let coord = { 
-    coords:{
+  let coord = {
+    coords: {
       latitude,
       longitude
     }
@@ -32,7 +27,7 @@ const VerMapa = () => {
   if (latitude && longitude) {
     return (
       <>
-        <MapView 
+        <MapView
           style={map}
           initialRegion={{
             latitude: latitude,
@@ -41,18 +36,18 @@ const VerMapa = () => {
             longitudeDelta: 0.005
           }}
         >
-          <Marker draggable 
+          <Marker
+            draggable
             coordinate={{
               latitude: latitude,
               longitude: longitude
-              }}
-            onDragEnd={e => {
+            }}
+            onDragEnd={(e) => {
               coord.coords = e.nativeEvent.coordinate
-              console.log(coord)
-              storeData(coord) 
-              }}
+              storeData(coord)
+            }}
           />
-        </MapView> 
+        </MapView>
       </>
     )
   }
@@ -61,7 +56,7 @@ const VerMapa = () => {
 const styles = StyleSheet.create({
   map: {
     width: '100%',
-    height:'100%'
+    height: '100%'
   }
 })
 

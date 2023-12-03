@@ -1,11 +1,34 @@
-import React from "react"
-import { StyleSheet, TouchableOpacity, View, Image, Text, Linking } from "react-native"
-import BotaoIconeTexto from "../components/BotaoIconeTexto"
+import React from 'react'
+import {
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Image,
+  Text,
+  Linking
+} from 'react-native'
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_500Medium
+} from '@expo-google-fonts/poppins'
+import BotaoIconeTexto from '../components/BotaoIconeTexto'
 import { LinearGradient } from 'expo-linear-gradient'
-import {  useFonts, Poppins_400Regular, Poppins_500Medium } from '@expo-google-fonts/poppins'
 
 const FazerDenuncia = ({ navigation }) => {
-  const { container, wrapperDenuncia, textoDenuncia, wrapperOutraOpcao, TextoOutraOpcao, sombra, logo, header,logoPrefeitura, textoVig, traco } = styles
+  const {
+    container,
+    wrapperDenuncia,
+    textoDenuncia,
+    wrapperOutraOpcao,
+    TextoOutraOpcao,
+    sombra,
+    logo,
+    header,
+    logoPrefeitura,
+    textoVig,
+    traco
+  } = styles
 
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -22,24 +45,59 @@ const FazerDenuncia = ({ navigation }) => {
   return (
     <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
       <View style={header}>
-        <Image source={require('../../assets/logoJuazeiro2.png')} style={logo}/>
+        <Image
+          source={require('../../assets/logoJuazeiro2.png')}
+          style={logo}
+        />
         <Image />
-        <Image source={require('../../assets/logoPrefeitura.png')} style={logoPrefeitura}/>
+        <Image
+          source={require('../../assets/logoPrefeitura.png')}
+          style={logoPrefeitura}
+        />
         <Image />
-        <View style={traco}></View>
+        <View style={traco} />
         <Text style={textoVig}>Núcleo de Endemias</Text>
       </View>
 
-      <TouchableOpacity style={[wrapperDenuncia, sombra]} onPress={() => navigation.navigate('MotivoDenuncia')}>
-        <BotaoIconeTexto nomeIcone={"alert-triangle"} tamanhoIcone={110} corItem={'#BE4048'} textoStyle={textoDenuncia} texto={'Reportar problema'} />
+      <TouchableOpacity
+        style={[wrapperDenuncia, sombra]}
+        onPress={() => navigation.navigate('MotivoDenuncia')}
+      >
+        <BotaoIconeTexto
+          nomeIcone={'alert-triangle'}
+          tamanhoIcone={110}
+          corItem={'#BE4048'}
+          textoStyle={textoDenuncia}
+          texto={'Reportar problema'}
+        />
       </TouchableOpacity>
 
-      <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => openURL('https://www.juazeirodonorte.ce.gov.br/')}>
-        <BotaoIconeTexto nomeIcone={"globe"} tamanhoIcone={47} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Nosso site'}/>
+      <TouchableOpacity
+        style={[wrapperOutraOpcao, sombra]}
+        onPress={() => openURL('https://www.juazeirodonorte.ce.gov.br/')}
+      >
+        <BotaoIconeTexto
+          nomeIcone={'globe'}
+          tamanhoIcone={47}
+          corItem={'#3F45B6'}
+          textoStyle={TextoOutraOpcao}
+          texto={'Nosso site'}
+        />
       </TouchableOpacity>
 
-      <TouchableOpacity style={[wrapperOutraOpcao, sombra]} onPress={() => openURL('https://www.instagram.com/prefjuazeirodonorte/?hl=pt-br')}>
-        <BotaoIconeTexto nomeIcone={"instagram"} tamanhoIcone={47} corItem={'#3F45B6'} textoStyle={TextoOutraOpcao} texto={'Instagram'}/>
+      <TouchableOpacity
+        style={[wrapperOutraOpcao, sombra]}
+        onPress={() =>
+          openURL('https://www.instagram.com/prefjuazeirodonorte/?hl=pt-br')
+        }
+      >
+        <BotaoIconeTexto
+          nomeIcone={'instagram'}
+          tamanhoIcone={47}
+          corItem={'#3F45B6'}
+          textoStyle={TextoOutraOpcao}
+          texto={'Instagram'}
+        />
       </TouchableOpacity>
     </LinearGradient>
   )
@@ -57,7 +115,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 310, 
+    width: 310,
     height: 285,
     borderRadius: 10,
     gap: 10
@@ -69,7 +127,7 @@ const styles = StyleSheet.create({
     fontSize: 34,
     color: '#BE4048',
     width: 175,
-    textAlign: 'center', 
+    textAlign: 'center',
     fontFamily: 'Poppins_500Medium',
     lineHeight: 40,
     paddingTop: 5
@@ -86,14 +144,14 @@ const styles = StyleSheet.create({
   },
   TextoOutraOpcao: {
     color: '#3F45B6',
-    fontSize: 30, 
+    fontSize: 30,
     fontFamily: 'Poppins_400Regular',
     paddingTop: 5
   },
   header: {
     flexDirection: 'row',
     width: 330,
-    height: 65, 
+    height: 65,
     justifyContent: 'space-between',
     alignItems: 'center'
   },

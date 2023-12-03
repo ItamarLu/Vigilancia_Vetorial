@@ -1,11 +1,37 @@
-import React from "react"
-import { Text, TouchableOpacity, StyleSheet, View } from "react-native"
+import React from 'react'
+import { Text, TouchableOpacity, StyleSheet, View } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
-import {  useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold } from '@expo-google-fonts/poppins'
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold
+} from '@expo-google-fonts/poppins'
+import { GetLatiLongi } from '../hooks/GetLatiLongi'
 
-const DenunciaFeita = ({ navigation }) => {
-  const { container, textoEnvi, textoAgra, textWrap, botaoVoltar, textoBotao, checkTextContainer, iconWrap } = styles
+const DenunciaFeita = ({ route, navigation }) => {
+  const {
+    container,
+    textoEnvi,
+    textoAgra,
+    textWrap,
+    botaoVoltar,
+    textoBotao,
+    checkTextContainer,
+    iconWrap
+  } = styles
+
+  const { image, numero } = route.params
+  const [latitude, longitude] = GetLatiLongi()
+
+  if (latitude && longitude) {
+    // Enviar informações para o dashboard
+    console.log('Informações Enviadas')
+    console.log(`Imagem: ${image}`)
+    console.log(`Latitude: ${latitude} - Longitude: ${longitude}`)
+    console.log(`Número do motivo: ${numero}`)
+  }
 
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -25,9 +51,12 @@ const DenunciaFeita = ({ navigation }) => {
         <View style={textWrap}>
           <Text style={textoEnvi}>Problema reportado!</Text>
           <Text style={textoAgra}>A cidade agradece.</Text>
-        </View> 
+        </View>
       </View>
-      <TouchableOpacity style={botaoVoltar} onPress={() => navigation.navigate('FazerDenuncia')}>
+      <TouchableOpacity
+        style={botaoVoltar}
+        onPress={() => navigation.navigate('FazerDenuncia')}
+      >
         <Text style={textoBotao}>Retornar</Text>
       </TouchableOpacity>
     </LinearGradient>
@@ -41,18 +70,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#3F45B6'
   },
-  checkTextContainer: { 
-    flex: 1, 
-    justifyContent: "center"
+  checkTextContainer: {
+    flex: 1,
+    justifyContent: 'center'
   },
   iconWrap: {
     justifyContent: 'center',
-    alignItems: "center",
+    alignItems: 'center',
     backgroundColor: 'white',
     width: 157,
     height: 157,
     borderRadius: 100,
-    alignSelf: 'center' 
+    alignSelf: 'center'
   },
   textWrap: {
     width: 280,

@@ -1,47 +1,50 @@
-import React from "react"
-import { Text, Image, StyleSheet, View } from "react-native"
+import React from 'react'
+import { Text, Image, StyleSheet, View } from 'react-native'
 
 const BotaoImagemTexto = (props) => {
   const { textoStyle, texto, fonteImagem } = props
   const { imagemStyle, imagemPadd } = styles
 
   // Tirar esses ifs e fazer funcionar só o require()
-  if (fonteImagem === '../../icons/bug.png') { 
+  if (fonteImagem === '../../icons/bug.png') {
     return (
       <>
         <Text style={textoStyle}>{texto}</Text>
         <View style={imagemPadd}>
-          <Image source={require('../../icons/bug.png')} style={imagemStyle}/>
+          <Image source={require('../../icons/bug.png')} style={imagemStyle} />
         </View>
       </>
     )
-  }
-  else if (fonteImagem === '../../icons/lixo.png') { 
+  } else if (fonteImagem === '../../icons/lixo.png') {
     return (
       <>
         <Text style={textoStyle}>{texto}</Text>
         <View style={imagemPadd}>
-          <Image source={require('../../icons/lixo.png')} style={imagemStyle}/>
+          <Image source={require('../../icons/lixo.png')} style={imagemStyle} />
         </View>
       </>
     )
-  }
-  else if (fonteImagem === '../../icons/scorpion.png') { 
+  } else if (fonteImagem === '../../icons/scorpion.png') {
     return (
       <>
         <Text style={textoStyle}>{texto}</Text>
         <View style={imagemPadd}>
-          <Image source={require('../../icons/scorpion.png')} style={imagemStyle}/>
+          <Image
+            source={require('../../icons/scorpion.png')}
+            style={imagemStyle}
+          />
         </View>
       </>
     )
-  }
-  else { 
+  } else {
     return (
       <>
         <Text style={textoStyle}>{texto}</Text>
         <View style={imagemPadd}>
-          <Image source={require('../../icons/mosquito.png')} style={imagemStyle}/>
+          <Image
+            source={require('../../icons/mosquito.png')}
+            style={imagemStyle}
+          />
         </View>
       </>
     )
@@ -50,7 +53,7 @@ const BotaoImagemTexto = (props) => {
 
 const styles = StyleSheet.create({
   imagemStyle: {
-    width: 55, 
+    width: 55,
     height: 55,
     tintColor: 'white'
   },

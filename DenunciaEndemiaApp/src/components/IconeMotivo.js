@@ -1,35 +1,38 @@
-import React from "react"
-import { Image, StyleSheet, View } from "react-native"
+import React from 'react'
+import { Image, StyleSheet, View } from 'react-native'
 
 const IconeMotivo = (props) => {
   const { motivo } = props
   const { iconeStyle, iconePadd } = styles
 
-  if (motivo === 'Barbeiro') { 
+  if (motivo === 'Barbeiro') {
     return (
       <View style={iconePadd}>
         <Image source={require('../../icons/bug.png')} style={iconeStyle} />
       </View>
     )
-  }
-  else if (motivo === 'Aedes A.') { 
+  } else if (motivo === 'Aedes A.') {
     return (
       <View style={iconePadd}>
-        <Image source={require('../../icons/mosquito.png')} style={iconeStyle} />
+        <Image
+          source={require('../../icons/mosquito.png')}
+          style={iconeStyle}
+        />
       </View>
     )
-  }
-  else if (motivo === 'Casa/Terreno') { 
+  } else if (motivo === 'Casa/Terreno') {
     return (
       <View style={iconePadd}>
         <Image source={require('../../icons/lixo.png')} style={iconeStyle} />
       </View>
     )
-  }
-  else { 
+  } else {
     return (
       <View style={iconePadd}>
-        <Image source={require('../../icons/scorpion.png')} style={iconeStyle} />
+        <Image
+          source={require('../../icons/scorpion.png')}
+          style={iconeStyle}
+        />
       </View>
     )
   }
@@ -37,7 +40,7 @@ const IconeMotivo = (props) => {
 
 const styles = StyleSheet.create({
   iconeStyle: {
-    width: 55, 
+    width: 55,
     height: 55,
     tintColor: '#06417B'
   },

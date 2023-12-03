@@ -1,8 +1,12 @@
-import React from "react"
-import { Text, StyleSheet, TouchableOpacity } from "react-native"
-import BotaoImagemTexto from "../components/BotaoImagemTexto"
+import React from 'react'
+import { Text, StyleSheet, TouchableOpacity } from 'react-native'
+import BotaoImagemTexto from '../components/BotaoImagemTexto'
 import { LinearGradient } from 'expo-linear-gradient'
-import {  useFonts, Poppins_400Regular, Poppins_500Medium } from '@expo-google-fonts/poppins'
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_500Medium
+} from '@expo-google-fonts/poppins'
 
 const MotivoDenuncia = ({ navigation }) => {
   const { container, textoMotivo, wrapperMotivo, botaoTexto } = styles
@@ -18,23 +22,74 @@ const MotivoDenuncia = ({ navigation }) => {
   return (
     <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
       <Text style={textoMotivo}>Qual o motivo do seu contato?</Text>
-      
-      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Aedes A.', numero: 0})}>
-        <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Aedes \nAegypti'} fonteImagem={'../../icons/mosquito.png'} />
-      </TouchableOpacity>
-      
-      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Barbeiro', numero: 1})}>
-        <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Barbeiro'} fonteImagem={'../../icons/bug.png'} />
+
+      <TouchableOpacity
+        style={wrapperMotivo}
+        onPress={() =>
+          navigation.navigate('DadosDenuncia', {
+            motivo: 'Aedes A.',
+            numero: 0
+          })
+        }
+      >
+        <BotaoImagemTexto
+          wrapperStyle={wrapperMotivo}
+          textoStyle={botaoTexto}
+          texto={'Aedes \nAegypti'}
+          fonteImagem={'../../icons/mosquito.png'}
+        />
       </TouchableOpacity>
 
-      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Casa/Terreno', numero: 2})}>
-        <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Casa fechada, \nTerreno baldio'} fonteImagem={'../../icons/lixo.png'} />
+      <TouchableOpacity
+        style={wrapperMotivo}
+        onPress={() =>
+          navigation.navigate('DadosDenuncia', {
+            motivo: 'Barbeiro',
+            numero: 1
+          })
+        }
+      >
+        <BotaoImagemTexto
+          wrapperStyle={wrapperMotivo}
+          textoStyle={botaoTexto}
+          texto={'Barbeiro'}
+          fonteImagem={'../../icons/bug.png'}
+        />
       </TouchableOpacity>
 
-      <TouchableOpacity style={wrapperMotivo} onPress={() => navigation.navigate('DadosDenuncia', {motivo: 'Escorpião', numero: 3})}>
-        <BotaoImagemTexto wrapperStyle={wrapperMotivo} textoStyle={botaoTexto} texto={'Escorpião'} fonteImagem={'../../icons/scorpion.png'} />
+      <TouchableOpacity
+        style={wrapperMotivo}
+        onPress={() =>
+          navigation.navigate('DadosDenuncia', {
+            motivo: 'Casa/Terreno',
+            numero: 2
+          })
+        }
+      >
+        <BotaoImagemTexto
+          wrapperStyle={wrapperMotivo}
+          textoStyle={botaoTexto}
+          texto={'Casa fechada, \nTerreno baldio'}
+          fonteImagem={'../../icons/lixo.png'}
+        />
       </TouchableOpacity>
 
+      <TouchableOpacity
+        style={wrapperMotivo}
+        onPress={() =>
+          navigation.navigate('DadosDenuncia', {
+            motivo: 'Escorpião',
+            numero: 3
+          })
+        }
+      >
+        <BotaoImagemTexto
+          wrapperStyle={wrapperMotivo}
+          textoStyle={botaoTexto}
+          texto={'Escorpião'}
+          fonteImagem={'../../icons/scorpion.png'}
+        />
+      </TouchableOpacity>
     </LinearGradient>
   )
 }

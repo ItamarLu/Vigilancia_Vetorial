@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import * as ImagePicker from 'expo-image-picker'
 
 export const GetImageLibrary = async () => {
@@ -9,6 +9,6 @@ export const GetImageLibrary = async () => {
   })
 
   if (!result.canceled) {
-    return(result.assets[0].uri)
+    return result.assets[0].uri
   }
 }

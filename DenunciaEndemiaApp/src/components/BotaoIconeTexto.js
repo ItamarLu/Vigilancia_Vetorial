@@ -1,6 +1,6 @@
-import React from "react"
-import { Text } from "react-native"
-import { Feather } from "@expo/vector-icons"
+import React from 'react'
+import { Text } from 'react-native'
+import { Feather } from '@expo/vector-icons'
 
 const BotaoIconeTexto = (props) => {
   const { nomeIcone, tamanhoIcone, textoStyle, texto, corItem } = props

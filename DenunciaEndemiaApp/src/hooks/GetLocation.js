@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from 'react'
 import * as Location from 'expo-location'
 
 export const GetLocation = () => {
   useEffect(() => {
-    (async() => {
+    (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync()
       if (status !== 'granted') {
         setError('Permissão para acessar localização foi negada')
@@ -21,17 +21,17 @@ export const GetLocation = () => {
         clearTimeout(timeoutId)
 
         setLocation(location)
-      } catch(e) {
+      } catch (e) {
         setError('Não foi possível obter sua Localização')
       } finally {
         setLoading(false)
       }
     })()
   }, [])
-  
+
   const [loading, setLoading] = useState(true)
   const [location, setLocation] = useState(null)
   const [error, setError] = useState()
-  
+
   return [loading, error, location]
 }

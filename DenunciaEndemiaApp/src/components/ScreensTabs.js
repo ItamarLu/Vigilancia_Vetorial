@@ -11,11 +11,31 @@ const Stack = createNativeStackNavigator()
 const ScreensTabs = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="FazerDenuncia" component={FazerDenuncia} options={{headerShown: false}}/>
-      <Stack.Screen name="MotivoDenuncia" component={MotivoDenuncia} options={{headerShown: false}}/>
-      <Stack.Screen name="DadosDenuncia" component={DadosDenuncia} options={{headerShown: false}}/>
-      <Stack.Screen name="DenunciaFeita" component={DenunciaFeita} options={{headerShown: false}}/>
-      <Stack.Screen name="VerMapa" component={VerMapa} options={{headerShown: false}}/>
+      <Stack.Screen
+        name="FazerDenuncia"
+        component={FazerDenuncia}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="MotivoDenuncia"
+        component={MotivoDenuncia}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="DadosDenuncia"
+        component={DadosDenuncia}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="DenunciaFeita"
+        component={DenunciaFeita}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="VerMapa"
+        component={VerMapa}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   )
 }
