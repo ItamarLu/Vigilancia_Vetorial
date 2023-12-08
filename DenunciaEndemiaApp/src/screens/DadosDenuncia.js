@@ -4,7 +4,7 @@ import TextInputText from '../components/TextInputText'
 import { Feather } from '@expo/vector-icons'
 import { GetImageLibrary } from '../hooks/GetImageLibrary'
 import { GetImageCamera } from '../hooks/GetImageCamera'
-import VerMapa from '../components/VerMapa'
+// import VerMapa from '../components/VerMapa'
 import IconeMotivo from '../components/IconeMotivo'
 import { LinearGradient } from 'expo-linear-gradient'
 import {
@@ -14,7 +14,7 @@ import {
   Poppins_600SemiBold
 } from '@expo-google-fonts/poppins'
 import Modal from 'react-native-modal'
-import { GetLatiLongi } from '../hooks/GetLatiLongi'
+// import { GetLatiLongi } from '../hooks/GetLatiLongi'
 
 const DadosDenuncia = ({ route, navigation }) => {
   const {
@@ -30,7 +30,7 @@ const DadosDenuncia = ({ route, navigation }) => {
     botaoImagemWrap,
     botaoImagem,
     imagePreview,
-    containerMapa,
+    // containerMapa,
     scrollStyle,
     textoIcone,
     imageModal,
@@ -112,9 +112,9 @@ const DadosDenuncia = ({ route, navigation }) => {
 
           <View>
             <Text style={sectionHeader}>Localização</Text>
-            <View style={containerMapa}>
+            {/* <View style={containerMapa}>
               <VerMapa />
-            </View>
+            </View> */}
           </View>
         </View>
       </View>
