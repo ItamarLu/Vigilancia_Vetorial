@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+  StatusBar
+} from 'react-native'
 import TextInputText from '../components/TextInputText'
 import { Feather } from '@expo/vector-icons'
 import { GetImageLibrary } from '../hooks/GetImageLibrary'
 import { GetImageCamera } from '../hooks/GetImageCamera'
-// import VerMapa from '../components/VerMapa'
 import IconeMotivo from '../components/IconeMotivo'
 import { LinearGradient } from 'expo-linear-gradient'
 import {
@@ -14,6 +20,7 @@ import {
   Poppins_600SemiBold
 } from '@expo-google-fonts/poppins'
 import Modal from 'react-native-modal'
+// import VerMapa from '../components/VerMapa'
 // import { GetLatiLongi } from '../hooks/GetLatiLongi'
 
 const DadosDenuncia = ({ route, navigation }) => {
@@ -34,7 +41,9 @@ const DadosDenuncia = ({ route, navigation }) => {
     scrollStyle,
     textoIcone,
     imageModal,
-    viewModal
+    viewModal,
+    isMissingView,
+    isMissingTxt
   } = styles
 
   const { motivo, numero } = route.params
@@ -45,6 +54,13 @@ const DadosDenuncia = ({ route, navigation }) => {
     setModalVisible(!isModalVisible)
   }
 
+  const [ender, setEnder] = useState('')
+  const childToParent = (childdata) => {
+    setEnder(childdata)
+  }
+
+  const [isMissing, setIsMissing] = useState(false)
+
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_500Medium,
@@ -54,8 +70,21 @@ const DadosDenuncia = ({ route, navigation }) => {
     return null
   }
 
+  const handleEnviar = () => {
+    if (ender) {
+      console.log('Informações Enviadas')
+      console.log(`Imagem: ${image}`)
+      console.log(`Número do motivo: ${numero}`)
+      console.log(`Endereço: ${ender}`)
+      navigation.navigate('DenunciaFeita')
+    } else {
+      setIsMissing(true)
+    }
+  }
+
   return (
     <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
+      <StatusBar backgroundColor="#093F78" />
       <View style={wrapperTitle}>
         {image ? (
           <TouchableOpacity
@@ -79,8 +108,9 @@ const DadosDenuncia = ({ route, navigation }) => {
         <View style={scrollStyle}>
           <TextInputText
             headerStyle={sectionHeader}
-            text={'Nome'}
+            header={'Endereço'}
             textInputStyle={inputTexto}
+            childToParent={childToParent}
           />
 
           <View>
@@ -110,24 +140,24 @@ const DadosDenuncia = ({ route, navigation }) => {
             </View>
           </View>
 
-          <View>
+          {/* <View>
             <Text style={sectionHeader}>Localização</Text>
-            {/* <View style={containerMapa}>
+            <View style={containerMapa}>
               <VerMapa />
-            </View> */}
-          </View>
+            </View>
+          </View> */}
         </View>
       </View>
 
-      <TouchableOpacity
-        style={botaoEnviar}
-        onPress={() => {
-          navigation.navigate('DenunciaFeita', {
-            image,
-            numero
-          })
-        }}
-      >
+      {isMissing ? (
+        <View style={isMissingView}>
+          <Text style={isMissingTxt}>Digite um Endereço</Text>
+        </View>
+      ) : (
+        false
+      )}
+
+      <TouchableOpacity style={botaoEnviar} onPress={handleEnviar}>
         <Text style={textoEnv}>Enviar</Text>
       </TouchableOpacity>
 
@@ -238,17 +268,31 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     objectFit: 'contain'
   },
-  containerMapa: {
-    backgroundColor: 'white',
-    borderColor: 'white',
-    borderWidth: 3,
-    borderStyle: 'solid',
-    borderRadius: 5,
-    width: 310,
-    height: 200
-  },
+  // containerMapa: {
+  //   backgroundColor: 'white',
+  //   borderColor: 'white',
+  //   borderWidth: 3,
+  //   borderStyle: 'solid',
+  //   borderRadius: 5,
+  //   width: 310,
+  //   height: 200
+  // },
   viewModal: {
     flex: 1,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  isMissingTxt: {
+    fontFamily: 'Poppins_400Regular',
+    color: '#E30B0B',
+    fontSize: 20
+  },
+  isMissingView: {
+    borderRadius: 5,
+    backgroundColor: 'white',
+    height: 40,
+    width: 230,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native'
 import BotaoImagemTexto from '../components/BotaoImagemTexto'
 import { LinearGradient } from 'expo-linear-gradient'
 import {
@@ -21,6 +21,7 @@ const MotivoDenuncia = ({ navigation }) => {
 
   return (
     <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
+      <StatusBar backgroundColor="#093F78" />
       <Text style={textoMotivo}>Qual o motivo do seu contato?</Text>
 
       <TouchableOpacity

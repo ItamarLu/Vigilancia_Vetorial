@@ -2,16 +2,20 @@ import React from 'react'
 import { View, Text, TextInput } from 'react-native'
 
 const TextInputText = (props) => {
-  const { headerStyle, text, textInputStyle } = props
+  const { headerStyle, header, textInputStyle, childToParent } = props
+
   return (
     <View>
-      <Text style={headerStyle}>{text}</Text>
+      <Text style={headerStyle}>{header}</Text>
       <TextInput
         style={textInputStyle}
         cursorColor={'#3F45B6'}
-        placeholder="Digite seu nome"
+        placeholder="Rua, número e bairro"
         placeholderTextColor="#3F45B6"
-        textContentType="name"
+        autoComplete="street-address"
+        onChangeText={(value) => {
+          childToParent(value)
+        }}
       />
     </View>
   )

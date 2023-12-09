@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, TouchableOpacity, StyleSheet, View } from 'react-native'
+import { Text, TouchableOpacity, StyleSheet, View, StatusBar } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import {
@@ -8,9 +8,8 @@ import {
   Poppins_500Medium,
   Poppins_600SemiBold
 } from '@expo-google-fonts/poppins'
-import { GetLatiLongi } from '../hooks/GetLatiLongi'
 
-const DenunciaFeita = ({ route, navigation }) => {
+const DenunciaFeita = ({ navigation }) => {
   const {
     container,
     textoEnvi,
@@ -21,17 +20,6 @@ const DenunciaFeita = ({ route, navigation }) => {
     checkTextContainer,
     iconWrap
   } = styles
-
-  const { image, numero } = route.params
-  const [latitude, longitude] = GetLatiLongi()
-
-  if (latitude && longitude) {
-    // Enviar informações para o dashboard
-    console.log('Informações Enviadas')
-    console.log(`Imagem: ${image}`)
-    console.log(`Latitude: ${latitude} - Longitude: ${longitude}`)
-    console.log(`Número do motivo: ${numero}`)
-  }
 
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -44,6 +32,7 @@ const DenunciaFeita = ({ route, navigation }) => {
 
   return (
     <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
+      <StatusBar backgroundColor="#093F78" />
       <View style={checkTextContainer}>
         <View style={iconWrap}>
           <FontAwesome5 name="check" size={100} color="#06417B" />

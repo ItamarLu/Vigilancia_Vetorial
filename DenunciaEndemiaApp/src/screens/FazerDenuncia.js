@@ -5,7 +5,8 @@ import {
   View,
   Image,
   Text,
-  Linking
+  Linking,
+  StatusBar
 } from 'react-native'
 import {
   useFonts,
@@ -44,6 +45,7 @@ const FazerDenuncia = ({ navigation }) => {
 
   return (
     <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
+      <StatusBar backgroundColor="#093F78" />
       <View style={header}>
         <Image
           source={require('../../assets/logoJuazeiro2.png')}
