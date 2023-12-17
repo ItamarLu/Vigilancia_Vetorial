@@ -22,6 +22,7 @@ import {
 import Modal from 'react-native-modal'
 // import VerMapa from '../components/VerMapa'
 // import { GetLatiLongi } from '../hooks/GetLatiLongi'
+import { sendDataToServer } from '../../api/sendDataToServer'
 
 const DadosDenuncia = ({ route, navigation }) => {
   const {
@@ -54,12 +55,23 @@ const DadosDenuncia = ({ route, navigation }) => {
     setModalVisible(!isModalVisible)
   }
 
+  const [nomeCidadao, setNomeCidadao] = useState('')
+  const nomeCidadaoInput = (nome) => {
+    setNomeCidadao(nome)
+  }
   const [ender, setEnder] = useState('')
-  const childToParent = (childdata) => {
-    setEnder(childdata)
+  const enderInput = (enderValue) => {
+    setEnder(enderValue)
   }
 
   const [isMissing, setIsMissing] = useState(false)
+
+  // Example data to send
+  const dadosParaEnviar = {
+    Cidadao: nomeCidadao,
+    Endereco: ender,
+    NumeroMotivo: numero
+  }
 
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -71,10 +83,13 @@ const DadosDenuncia = ({ route, navigation }) => {
   }
 
   const handleEnviar = () => {
-    if (ender) {
+    if (ender && nomeCidadao) {
+      // Call the function with your data
+      sendDataToServer(dadosParaEnviar)
       console.log('Informações Enviadas')
       console.log(`Imagem: ${image}`)
       console.log(`Número do motivo: ${numero}`)
+      console.log(`Cidadão: ${nomeCidadao}`)
       console.log(`Endereço: ${ender}`)
       navigation.navigate('DenunciaFeita')
     } else {
@@ -108,9 +123,18 @@ const DadosDenuncia = ({ route, navigation }) => {
         <View style={scrollStyle}>
           <TextInputText
             headerStyle={sectionHeader}
-            header={'Endereço'}
+            header={'Nome'}
+            placeho={'Seu nome'}
             textInputStyle={inputTexto}
-            childToParent={childToParent}
+            childToParent={nomeCidadaoInput}
+          />
+
+          <TextInputText
+            headerStyle={sectionHeader}
+            header={'Endereço'}
+            placeho={'Rua, número e bairro'}
+            textInputStyle={inputTexto}
+            childToParent={enderInput}
           />
 
           <View>
@@ -151,7 +175,7 @@ const DadosDenuncia = ({ route, navigation }) => {
 
       {isMissing ? (
         <View style={isMissingView}>
-          <Text style={isMissingTxt}>Digite um Endereço</Text>
+          <Text style={isMissingTxt}>Informações faltando</Text>
         </View>
       ) : (
         false
@@ -291,7 +315,6 @@ const styles = StyleSheet.create({
   isMissingView: {
     borderRadius: 5,
     backgroundColor: 'white',
-    height: 40,
     width: 230,
     display: 'flex',
     justifyContent: 'center',

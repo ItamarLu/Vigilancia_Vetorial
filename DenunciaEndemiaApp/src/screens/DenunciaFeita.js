@@ -1,5 +1,11 @@
 import React from 'react'
-import { Text, TouchableOpacity, StyleSheet, View, StatusBar } from 'react-native'
+import {
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  View,
+  StatusBar
+} from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import {

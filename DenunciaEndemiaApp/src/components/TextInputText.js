@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TextInput } from 'react-native'
 
 const TextInputText = (props) => {
-  const { headerStyle, header, textInputStyle, childToParent } = props
+  const { headerStyle, header, placeho, textInputStyle, childToParent } = props
 
   return (
     <View>
@@ -10,9 +10,8 @@ const TextInputText = (props) => {
       <TextInput
         style={textInputStyle}
         cursorColor={'#3F45B6'}
-        placeholder="Rua, número e bairro"
+        placeholder={placeho}
         placeholderTextColor="#3F45B6"
-        autoComplete="street-address"
         onChangeText={(value) => {
           childToParent(value)
         }}
