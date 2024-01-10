@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "DenunciaEndemiaApp",
+    "name": "Vigilância Vetorial",
     "slug": "DenunciaEndemiaApp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -20,7 +20,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#093F78"
       },
       "package": "com.DenunciaEndemiaApp.myapp",
       "permissions": [
@@ -39,18 +39,18 @@
         {
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
-      ],
-      [
-        "expo-location",
-        {
-          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
-        }
       ]
     ],
     "extra": {
       "eas": {
         "projectId": "4994c5fd-2737-4cb0-9bfa-2f9a92fefebd"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/4994c5fd-2737-4cb0-9bfa-2f9a92fefebd"
     }
   }
 }

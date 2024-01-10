@@ -20,8 +20,6 @@ import {
   Poppins_600SemiBold
 } from '@expo-google-fonts/poppins'
 import Modal from 'react-native-modal'
-// import VerMapa from '../components/VerMapa'
-// import { GetLatiLongi } from '../hooks/GetLatiLongi'
 import { sendDataToServer } from '../../api/sendDataToServer'
 
 const DadosDenuncia = ({ route, navigation }) => {
@@ -38,7 +36,6 @@ const DadosDenuncia = ({ route, navigation }) => {
     botaoImagemWrap,
     botaoImagem,
     imagePreview,
-    // containerMapa,
     scrollStyle,
     textoIcone,
     imageModal,
@@ -66,11 +63,10 @@ const DadosDenuncia = ({ route, navigation }) => {
 
   const [isMissing, setIsMissing] = useState(false)
 
-  // Example data to send
   const dadosParaEnviar = {
-    Cidadao: nomeCidadao,
-    Endereco: ender,
-    NumeroMotivo: numero
+    type: numero,
+    location: ender,
+    citizen: nomeCidadao
   }
 
   let [fontsLoaded] = useFonts({
@@ -84,13 +80,7 @@ const DadosDenuncia = ({ route, navigation }) => {
 
   const handleEnviar = () => {
     if (ender && nomeCidadao) {
-      // Call the function with your data
       sendDataToServer(dadosParaEnviar)
-      console.log('Informações Enviadas')
-      console.log(`Imagem: ${image}`)
-      console.log(`Número do motivo: ${numero}`)
-      console.log(`Cidadão: ${nomeCidadao}`)
-      console.log(`Endereço: ${ender}`)
       navigation.navigate('DenunciaFeita')
     } else {
       setIsMissing(true)
@@ -163,13 +153,6 @@ const DadosDenuncia = ({ route, navigation }) => {
               </TouchableOpacity>
             </View>
           </View>
-
-          {/* <View>
-            <Text style={sectionHeader}>Localização</Text>
-            <View style={containerMapa}>
-              <VerMapa />
-            </View>
-          </View> */}
         </View>
       </View>
 
@@ -292,15 +275,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     objectFit: 'contain'
   },
-  // containerMapa: {
-  //   backgroundColor: 'white',
-  //   borderColor: 'white',
-  //   borderWidth: 3,
-  //   borderStyle: 'solid',
-  //   borderRadius: 5,
-  //   width: 310,
-  //   height: 200
-  // },
   viewModal: {
     flex: 1,
     display: 'flex',

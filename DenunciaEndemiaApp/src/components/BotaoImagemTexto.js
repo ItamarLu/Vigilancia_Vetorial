@@ -5,7 +5,6 @@ const BotaoImagemTexto = (props) => {
   const { textoStyle, texto, fonteImagem } = props
   const { imagemStyle, imagemPadd } = styles
 
-  // Tirar esses ifs e fazer funcionar só o require()
   if (fonteImagem === '../../icons/bug.png') {
     return (
       <>
