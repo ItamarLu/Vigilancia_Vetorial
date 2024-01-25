@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TextInput } from 'react-native'
 
 const TextInputText = (props) => {
-  const { headerStyle, header, placeho, textInputStyle, childToParent } = props
+  const { headerStyle, header, placeho, textInputStyle, childToParent, value } = props
 
   return (
     <View>
@@ -15,6 +15,7 @@ const TextInputText = (props) => {
         onChangeText={(value) => {
           childToParent(value)
         }}
+        value={value}
       />
     </View>
   )

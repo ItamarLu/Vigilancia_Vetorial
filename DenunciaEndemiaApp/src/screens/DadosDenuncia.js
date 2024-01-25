@@ -20,6 +20,8 @@ import {
   Poppins_600SemiBold
 } from '@expo-google-fonts/poppins'
 import Modal from 'react-native-modal'
+// import VerMapa from '../components/VerMapa'
+import { GetLatiLongi } from '../hooks/GetLatiLongi'
 import { sendDataToServer } from '../../api/sendDataToServer'
 
 const DadosDenuncia = ({ route, navigation }) => {
@@ -36,12 +38,15 @@ const DadosDenuncia = ({ route, navigation }) => {
     botaoImagemWrap,
     botaoImagem,
     imagePreview,
+    // containerMapa,
     scrollStyle,
     textoIcone,
     imageModal,
     viewModal,
     isMissingView,
-    isMissingTxt
+    isMissingTxt,
+    botaoLoc,
+    textoLoc
   } = styles
 
   const { motivo, numero } = route.params
@@ -52,6 +57,8 @@ const DadosDenuncia = ({ route, navigation }) => {
     setModalVisible(!isModalVisible)
   }
 
+  const [latitude, longitude] = GetLatiLongi()
+
   const [nomeCidadao, setNomeCidadao] = useState('')
   const nomeCidadaoInput = (nome) => {
     setNomeCidadao(nome)
@@ -60,9 +67,13 @@ const DadosDenuncia = ({ route, navigation }) => {
   const enderInput = (enderValue) => {
     setEnder(enderValue)
   }
+  const usarLocalizacaoAtual = () => {
+    setEnder(`${latitude} ${longitude}`)
+  }
 
   const [isMissing, setIsMissing] = useState(false)
 
+  // Example data to send
   const dadosParaEnviar = {
     type: numero,
     location: ender,
@@ -80,7 +91,11 @@ const DadosDenuncia = ({ route, navigation }) => {
 
   const handleEnviar = () => {
     if (ender && nomeCidadao) {
+      // Call the function with your data
       sendDataToServer(dadosParaEnviar)
+      console.log(`Número do motivo: ${numero}`)
+      console.log(`Cidadão: ${nomeCidadao}`)
+      console.log(`Endereço: ${ender}`)
       navigation.navigate('DenunciaFeita')
     } else {
       setIsMissing(true)
@@ -117,16 +132,19 @@ const DadosDenuncia = ({ route, navigation }) => {
             placeho={'Seu nome'}
             textInputStyle={inputTexto}
             childToParent={nomeCidadaoInput}
+            value={nomeCidadao}
           />
-
           <TextInputText
             headerStyle={sectionHeader}
             header={'Endereço'}
             placeho={'Rua, número e bairro'}
             textInputStyle={inputTexto}
             childToParent={enderInput}
+            value={ender}
           />
-
+          <TouchableOpacity style={botaoLoc} onPress={usarLocalizacaoAtual}>
+            <Text style={textoLoc}>Usar Localização Atual</Text>
+          </TouchableOpacity>
           <View>
             <Text style={sectionHeader}>{'Imagem'}</Text>
 
@@ -153,6 +171,13 @@ const DadosDenuncia = ({ route, navigation }) => {
               </TouchableOpacity>
             </View>
           </View>
+
+          {/* <View>
+            <Text style={sectionHeader}>Localização</Text>
+            <View style={containerMapa}>
+              <VerMapa />
+            </View>
+          </View> */}
         </View>
       </View>
 
@@ -275,6 +300,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     objectFit: 'contain'
   },
+  // containerMapa: {
+  //   backgroundColor: 'white',
+  //   borderColor: 'white',
+  //   borderWidth: 3,
+  //   borderStyle: 'solid',
+  //   borderRadius: 5,
+  //   width: 310,
+  //   height: 200
+  // },
   viewModal: {
     flex: 1,
     display: 'flex',
@@ -298,6 +332,20 @@ const styles = StyleSheet.create({
     width: 350,
     height: 350,
     objectFit: 'contain'
+  },
+  botaoLoc: {
+    backgroundColor: '#06417B',
+    width: 310,
+    height: 50,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 7
+  },
+  textoLoc: {
+    color: 'white',
+    fontSize: 20,
+    fontFamily: 'Poppins_500Medium'
   }
 })
 export default DadosDenuncia

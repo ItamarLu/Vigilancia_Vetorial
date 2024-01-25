@@ -3,6 +3,7 @@ import FazerDenuncia from '../../src/screens/FazerDenuncia'
 import MotivoDenuncia from '../../src/screens/MotivoDenuncia'
 import DadosDenuncia from '../../src/screens/DadosDenuncia'
 import DenunciaFeita from '../../src/screens/DenunciaFeita'
+import VerMapa from './VerMapa'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 const Stack = createNativeStackNavigator()
