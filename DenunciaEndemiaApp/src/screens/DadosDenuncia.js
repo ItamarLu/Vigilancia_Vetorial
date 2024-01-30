@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   View,
   Image,
-  StatusBar
+  StatusBar,
+  ActivityIndicator
 } from 'react-native'
 import TextInputText from '../components/TextInputText'
 import { Feather } from '@expo/vector-icons'
@@ -23,6 +24,7 @@ import Modal from 'react-native-modal'
 // import VerMapa from '../components/VerMapa'
 import { GetLatiLongi } from '../hooks/GetLatiLongi'
 import { sendDataToServer } from '../../api/sendDataToServer'
+import * as FileSystem from 'expo-file-system'
 
 const DadosDenuncia = ({ route, navigation }) => {
   const {
@@ -72,13 +74,7 @@ const DadosDenuncia = ({ route, navigation }) => {
   }
 
   const [isMissing, setIsMissing] = useState(false)
-
-  // Example data to send
-  const dadosParaEnviar = {
-    type: numero,
-    location: ender,
-    citizen: nomeCidadao
-  }
+  const [taEnviando, setTaEnviando] = useState(false)
 
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -89,14 +85,26 @@ const DadosDenuncia = ({ route, navigation }) => {
     return null
   }
 
-  const handleEnviar = () => {
-    if (ender && nomeCidadao) {
-      // Call the function with your data
-      sendDataToServer(dadosParaEnviar)
-      console.log(`Número do motivo: ${numero}`)
-      console.log(`Cidadão: ${nomeCidadao}`)
-      console.log(`Endereço: ${ender}`)
-      navigation.navigate('DenunciaFeita')
+  const handleEnviar = async () => {
+    if (ender && nomeCidadao && image) {
+      try {
+        const dataToSend = {
+          type: numero,
+          location: ender,
+          citizen: nomeCidadao,
+          image: image.match(/\/([^\/]+)$/)[1]
+        }
+
+        setTaEnviando(true)
+        await sendDataToServer(dataToSend)
+        console.log(`Número do motivo: ${numero}`)
+        console.log(`Cidadão: ${nomeCidadao}`)
+        console.log(`Endereço: ${ender}`)
+        navigation.navigate('DenunciaFeita')
+        setTaEnviando(false)
+      } catch (error) {
+        console.error('Falha ao Enviar, verifique sua conexão com a internet')
+      }
     } else {
       setIsMissing(true)
     }
@@ -189,9 +197,15 @@ const DadosDenuncia = ({ route, navigation }) => {
         false
       )}
 
-      <TouchableOpacity style={botaoEnviar} onPress={handleEnviar}>
-        <Text style={textoEnv}>Enviar</Text>
-      </TouchableOpacity>
+      {taEnviando ? (
+        <TouchableOpacity style={botaoEnviar}>
+          <ActivityIndicator size={'large'} color={'white'} />
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity style={botaoEnviar} onPress={handleEnviar}>
+          <Text style={textoEnv}>Enviar</Text>
+        </TouchableOpacity>
+      )}
 
       <Modal
         isVisible={isModalVisible}
