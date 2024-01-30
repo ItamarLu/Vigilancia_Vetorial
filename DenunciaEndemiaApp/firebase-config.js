@@ -1,9 +1,9 @@
 import {
   FIREBASE_API_KEY,
   FIREBASE_STORAGE_BUCKET,
-  FIREBASE_APP_ID
-  // FIREBASE_PROJECT_ID,
-  // FIREBASE_AUTH_DOMAIN,
+  FIREBASE_APP_ID,
+  FIREBASE_PROJECT_ID,
+  FIREBASE_AUTH_DOMAIN,
 } from '@env'
 import { initializeApp, getApp, getApps } from 'firebase/app'
 import {
@@ -16,9 +16,9 @@ import {
 const firebaseConfig = {
   apiKey: FIREBASE_API_KEY,
   storageBucket: FIREBASE_STORAGE_BUCKET,
-  appId: FIREBASE_APP_ID
-  // projectId: FIREBASE_PROJECT_ID,
-  // authDomain: FIREBASE_AUTH_DOMAIN,
+  appId: FIREBASE_APP_ID,
+  projectId: FIREBASE_PROJECT_ID,
+  authDomain: FIREBASE_AUTH_DOMAIN,
 }
 
 if (getApps().length === 0) {
