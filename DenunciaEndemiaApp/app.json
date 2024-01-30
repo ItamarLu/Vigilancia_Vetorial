@@ -37,13 +37,14 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "The app accesses your photos to let you share them with your friends."
+          "photosPermission": "Allow Vigilância Vetorial to access your photo",
+          "cameraPermission": "Allow Vigilância Vetorial to access your camera"
         }
       ],
       [
         "expo-location",
         {
-          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+          "locationAlwaysAndWhenInUsePermission": "Allow Vigilância Vetorial to use your location."
         }
       ]
     ],

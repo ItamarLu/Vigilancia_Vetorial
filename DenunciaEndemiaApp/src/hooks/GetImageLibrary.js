@@ -4,6 +4,7 @@ export const GetImageLibrary = async () => {
   const result = await ImagePicker.launchImageLibraryAsync({
     allowsEditing: true,
     base64: true,
+    mediaTypes: ImagePicker.MediaTypeOptions.Images,
     quality: 1
   })
 

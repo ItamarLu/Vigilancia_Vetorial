@@ -24,7 +24,7 @@ import Modal from 'react-native-modal'
 // import VerMapa from '../components/VerMapa'
 import { GetLatiLongi } from '../hooks/GetLatiLongi'
 import { sendDataToServer } from '../../api/sendDataToServer'
-import * as FileSystem from 'expo-file-system'
+import { uploadToFirebase } from '../../firebase-config'
 
 const DadosDenuncia = ({ route, navigation }) => {
   const {
@@ -86,20 +86,25 @@ const DadosDenuncia = ({ route, navigation }) => {
   }
 
   const handleEnviar = async () => {
-    if (ender && nomeCidadao && image) {
+    if (ender && nomeCidadao) {
       try {
+        setTaEnviando(true)
+
+        const uploadResp = await uploadToFirebase(
+          image,
+          image.match(/\/([^\/]+)$/)[1]
+        )
+
         const dataToSend = {
           type: numero,
           location: ender,
           citizen: nomeCidadao,
-          image: image.match(/\/([^\/]+)$/)[1]
+          image: uploadResp.downloadUrl
         }
 
-        setTaEnviando(true)
+        console.log(uploadResp.downloadUrl)
+
         await sendDataToServer(dataToSend)
-        console.log(`Número do motivo: ${numero}`)
-        console.log(`Cidadão: ${nomeCidadao}`)
-        console.log(`Endereço: ${ender}`)
         navigation.navigate('DenunciaFeita')
         setTaEnviando(false)
       } catch (error) {

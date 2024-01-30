@@ -4,6 +4,7 @@ export const GetImageCamera = async () => {
   const result = await ImagePicker.launchCameraAsync({
     allowsEditing: true,
     base64: true,
+    mediaTypes: ImagePicker.MediaTypeOptions.Images,
     quality: 1
   })
 
