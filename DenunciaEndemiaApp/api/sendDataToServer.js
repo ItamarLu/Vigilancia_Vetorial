@@ -1,4 +1,4 @@
-const apiUrl = 'https://d73f-2001-12f0-79d-8000-5ce1-bb58-b86f-df87.ngrok-free.app'
+const apiUrl = 'https://1496-2001-12f0-79d-806e-6df2-1958-f438-4ae9.ngrok-free.app/api/receber-report'
 
 export const sendDataToServer = async (data) => {
   try {

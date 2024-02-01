@@ -6,7 +6,8 @@ import {
   View,
   Image,
   StatusBar,
-  ActivityIndicator
+  ActivityIndicator,
+  ScrollView
 } from 'react-native'
 import TextInputText from '../components/TextInputText'
 import { Feather } from '@expo/vector-icons'
@@ -88,25 +89,37 @@ const DadosDenuncia = ({ route, navigation }) => {
   const handleEnviar = async () => {
     if (ender && nomeCidadao) {
       try {
-        setTaEnviando(true)
+        if (image) {
+          setTaEnviando(true)
 
-        const uploadResp = await uploadToFirebase(
-          image,
-          image.match(/\/([^\/]+)$/)[1]
-        )
+          const uploadResp = await uploadToFirebase(
+            image,
+            image.match(/\/([^\/]+)$/)[1]
+          )
 
-        const dataToSend = {
-          type: numero,
-          location: ender,
-          citizen: nomeCidadao,
-          image: uploadResp.downloadUrl
+          const dataToSend = {
+            type: numero,
+            location: ender,
+            citizen: nomeCidadao,
+            photo: uploadResp.downloadUrl
+          }
+
+          await sendDataToServer(dataToSend)
+          navigation.navigate('DenunciaFeita')
+          setTaEnviando(false)
+        } else {
+          setTaEnviando(true)
+
+          const dataToSend = {
+            type: numero,
+            location: ender,
+            citizen: nomeCidadao
+          }
+
+          await sendDataToServer(dataToSend)
+          navigation.navigate('DenunciaFeita')
+          setTaEnviando(false)
         }
-
-        console.log(uploadResp.downloadUrl)
-
-        await sendDataToServer(dataToSend)
-        navigation.navigate('DenunciaFeita')
-        setTaEnviando(false)
       } catch (error) {
         console.error('Falha ao Enviar, verifique sua conexão com a internet')
       }
