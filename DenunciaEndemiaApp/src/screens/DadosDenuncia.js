@@ -26,6 +26,7 @@ import Modal from 'react-native-modal'
 import { GetLatiLongi } from '../hooks/GetLatiLongi'
 import { sendDataToServer } from '../../api/sendDataToServer'
 import { uploadToFirebase } from '../../firebase-config'
+import { itemDetails } from './a'
 
 const DadosDenuncia = ({ route, navigation }) => {
   const {
@@ -71,10 +72,22 @@ const DadosDenuncia = ({ route, navigation }) => {
     setEnder(enderValue)
   }
   const usarLocalizacaoAtual = () => {
-    setEnder(`${latitude} ${longitude}`)
+    setEnder(`${latitude}, ${longitude}`)
     setIsEditable(false)
-    setCorTexto({ color: '#787878' })
+    setCorTexto({ color: '#505050' })
+    // hjl()
   }
+
+  // const hjl = () => {
+  //   Object.entries(itemDetails).map(
+  //     async ([id]) =>
+  //       await sendDataToServer({
+  //         type: itemDetails[id].type,
+  //         location: itemDetails[id].location,
+  //         citizen: itemDetails[id].citizen
+  //       })
+  //   )
+  // }
 
   const [isMissing, setIsMissing] = useState(false)
   const [taEnviando, setTaEnviando] = useState(false)
