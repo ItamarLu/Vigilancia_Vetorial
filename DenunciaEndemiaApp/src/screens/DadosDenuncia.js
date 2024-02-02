@@ -72,10 +72,14 @@ const DadosDenuncia = ({ route, navigation }) => {
   }
   const usarLocalizacaoAtual = () => {
     setEnder(`${latitude} ${longitude}`)
+    setIsEditable(false)
+    setCorTexto({ color: '#787878' })
   }
 
   const [isMissing, setIsMissing] = useState(false)
   const [taEnviando, setTaEnviando] = useState(false)
+  const [isEditable, setIsEditable] = useState(true)
+  const [corTexto, setCorTexto] = useState()
 
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -167,6 +171,8 @@ const DadosDenuncia = ({ route, navigation }) => {
             textInputStyle={inputTexto}
             childToParent={enderInput}
             value={ender}
+            editable={isEditable}
+            textCor={corTexto}
           />
           <TouchableOpacity style={botaoLoc} onPress={usarLocalizacaoAtual}>
             <Text style={textoLoc}>Usar Localização Atual</Text>
