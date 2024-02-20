@@ -6,8 +6,7 @@ import {
   View,
   Image,
   StatusBar,
-  ActivityIndicator,
-  ScrollView
+  ActivityIndicator
 } from 'react-native'
 import TextInputText from '../components/TextInputText'
 import { Feather } from '@expo/vector-icons'
@@ -22,11 +21,9 @@ import {
   Poppins_600SemiBold
 } from '@expo-google-fonts/poppins'
 import Modal from 'react-native-modal'
-// import VerMapa from '../components/VerMapa'
 import { GetLatiLongi } from '../hooks/GetLatiLongi'
 import { sendDataToServer } from '../../api/sendDataToServer'
 import { uploadToFirebase } from '../../firebase-config'
-import { itemDetails } from './a'
 
 const DadosDenuncia = ({ route, navigation }) => {
   const {
@@ -42,7 +39,6 @@ const DadosDenuncia = ({ route, navigation }) => {
     botaoImagemWrap,
     botaoImagem,
     imagePreview,
-    // containerMapa,
     scrollStyle,
     textoIcone,
     imageModal,
@@ -75,19 +71,7 @@ const DadosDenuncia = ({ route, navigation }) => {
     setEnder(`${latitude}, ${longitude}`)
     setIsEditable(false)
     setCorTexto({ color: '#505050' })
-    // hjl()
   }
-
-  // const hjl = () => {
-  //   Object.entries(itemDetails).map(
-  //     async ([id]) =>
-  //       await sendDataToServer({
-  //         type: itemDetails[id].type,
-  //         location: itemDetails[id].location,
-  //         citizen: itemDetails[id].citizen
-  //       })
-  //   )
-  // }
 
   const [isMissing, setIsMissing] = useState(false)
   const [taEnviando, setTaEnviando] = useState(false)
@@ -216,13 +200,6 @@ const DadosDenuncia = ({ route, navigation }) => {
               </TouchableOpacity>
             </View>
           </View>
-
-          {/* <View>
-            <Text style={sectionHeader}>Localização</Text>
-            <View style={containerMapa}>
-              <VerMapa />
-            </View>
-          </View> */}
         </View>
       </View>
 
@@ -351,15 +328,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     objectFit: 'contain'
   },
-  // containerMapa: {
-  //   backgroundColor: 'white',
-  //   borderColor: 'white',
-  //   borderWidth: 3,
-  //   borderStyle: 'solid',
-  //   borderRadius: 5,
-  //   width: 310,
-  //   height: 200
-  // },
   viewModal: {
     flex: 1,
     display: 'flex',

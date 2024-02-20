@@ -3,7 +3,7 @@ import { Text, StyleSheet } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 
-const ErrorItem = ({ onRetry }) => {
+const ErrorItem = () => {
   const { container, errorMessage } = styles
   return (
     <LinearGradient colors={['#093F78', '#017DFF']} style={container}>
