@@ -1,5 +1,5 @@
 //Link para enviar os dados para o banco de dados
-const apiUrl = 'https://db00-186-249-92-21.ngrok-free.app'
+const apiUrl = 'https://850c-2804-29b8-5096-44bb-2db4-6dc1-f014-3de7.ngrok-free.app/api/receber-report'
 
 export const sendDataToServer = async (data) => {
   try {
